@@ -1,0 +1,19 @@
+#navigation-bar {
+  width: 100vw;
+  height: 30px;
+  padding: 10px;
+  -moz-box-shadow:     0 0 10px rgb(200, 200, 200);
+  -webkit-box-shadow:  0 0 10px rgb(200, 200, 200);
+  box-shadow:          0 0 10px rgb(200, 200, 200);
+  display: flex;
+  justify-content: space-evenly;
+  text-decoration: none;
+}
+
+#navigation-bar > a {
+  text-decoration: none;
+}
+
+#navigation-bar > a > h2 {
+  margin: 0;
+}

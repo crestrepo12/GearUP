@@ -5,6 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+const passport = require('passport');
+const session = require("express-session");
+
 
 var users = require('./routes/users');
 
@@ -20,6 +23,15 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+app.use(
+  session({
+      secret: "\x02\xf3\xf7r\t\x9f\xee\xbbu\xb1\xe1\x90\xfe'\xab\xa6L6\xdd\x8d[\xccO\xfe",
+      resave: false,
+      saveUninitialized: true
+  })
+);
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 
