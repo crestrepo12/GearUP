@@ -14,7 +14,8 @@ CREATE TABLE employees (
   bio VARCHAR,
 	zipcode VARCHAR,
   phone_number VARCHAR(12),
-	imgurl VARCHAR DEFAULT 'http://flaticons.net/gd/makefg.php?i=icons/People/Employee.png&r=255&g=255&b=255'
+	imgurl VARCHAR DEFAULT 'http://flaticons.net/gd/makefg.php?i=icons/People/Employee.png&r=255&g=255&b=255',
+  company_name VARCHAR
 );
 
 CREATE TABLE clients (

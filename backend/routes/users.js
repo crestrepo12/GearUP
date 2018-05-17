@@ -10,6 +10,8 @@ router.post('/create_account', db.createAccount);
 router.get('/', (req, res, next) => res.status(200)
     .send({title: "hello"}))
 
+router.get('/all_employees', db.getAllEmployees)
+
 
 // Patch Methods 
 
