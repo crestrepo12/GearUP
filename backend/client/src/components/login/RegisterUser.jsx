@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Route, Link, Switch, Redirect } from "react-router-dom";
 
 class RegisterUser extends Component {
   constructor() {
@@ -11,6 +12,7 @@ class RegisterUser extends Component {
       email: "",
       password: "",
       confirm_password: "",
+      newEmployeeLogin: false,
       message: ""
     };
   }
@@ -45,33 +47,30 @@ class RegisterUser extends Component {
     }
 
     axios
-      .post(
-        "/users/create_account",
-        this.setState({
+      .post("/users/create_account",
+        {
           firstname: firstname,
           lastname: lastname,
           email: email,
           password: password
         })
-      )
       .then(res => {
         this.setState({
-          message: "account registered",
+          message: "account created",
         })
-        // axios
-        //   .post("/users/login", {
-        //     username: username,
-        //     password: password
-        //   })
-        //   .then(res => {
-        //     // redirect to user's profile
-        //     this.props.frontendRegister(this.state);
-        //     this.setState({
-        //       newUserSignedIn: true
-        //     });
-        //     this.props.appLogIn();
-        //   })
-          .catch(err => {
+
+        axios
+          .post("/users/login", {
+            email: email,
+            password: password
+          })
+          .then(res => {
+            // redirect to user's profile
+            this.setState({
+              newEmployeeLogin: true
+            });
+          })
+      .catch(err => {
             console.log(err);
             this.setState({
               message: "an error has occurred"
@@ -86,13 +85,20 @@ class RegisterUser extends Component {
       lastname,
       email,
       password,
-      confirm_password
+      confirm_password,
+      newEmployeeLogin
     } = this.state;
 
     const { 
       inputOnChange,
       submitRegisterForm
     } = this;
+
+    // if(newEmployeeLogin) {
+    //   console.log("new employee logged in");
+    //   const { id } = match.params;
+    //   return <Redirect to={`/employee/${id}`} />
+    // }
 
     return (
       <div className="register-page">

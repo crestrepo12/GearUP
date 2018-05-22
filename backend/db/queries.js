@@ -1,6 +1,4 @@
-const pgp = require("pg-promise")({});
-const connectionString = "postgres://localhost/gearup";
-const db = pgp(connectionString);
+const db = require('./index');
 
 // importing to create hash for passwords
 const authHelpers = require("../auth/helpers");
@@ -9,15 +7,15 @@ const passport = require("../auth/local");
 const createAccount = (req, res, next) => {
   // frontend using password, backend using password_digest
   const hash = authHelpers.createHash(req.body.password);
-  console.log("createAccount hash: ", hash);
+  // console.log("createAccount hash: ", hash);
   db
     .none(
       "INSERT INTO employees (email, password_digest, firstname, lastname) VALUES (${email}, ${password_digest}, ${firstname}, ${lastname})",
       {
-        email: req.body.email,
-        password_digest: hash,
         firstname: req.body.firstname,
         lastname: req.body.lastname,
+        email: req.body.email,
+        password_digest: hash,
         // occupation: req.body.occupation,
         // gender: req.body.gender,
         // bio: req.body.bio,
@@ -27,8 +25,7 @@ const createAccount = (req, res, next) => {
     )
     .then(() => {
       res.send(
-        `created employee account: ${req.body.email} - ${req.body.firstname, req.body.lastname}.
-        }`
+        `created employee account: ${req.body.email} - ${req.body.firstname + " " + req.body.lastname}.`
       );
     })
     .catch(err => {
@@ -82,12 +79,13 @@ const getAllEmployees = (req, res, next) => {
 };
 
 // const loginUser = (req, res, next) => {
+//   console.log("trying to login user", req.body);
 //   passport.authenticate("local", {});
 //   const authenticate = passport.authenticate("local", (err, user, info) => {
 //     if (err) {
 //       res.status(500).send("error while trying to log in");
 //     } else if (!user) {
-//       res.status(401).send("invalid username/password");
+//       res.status(401).send("invalid email/password");
 //     } else if (user) {
 //       req.logIn(user, function (err) {
 //         if (err) {
@@ -104,7 +102,7 @@ const getAllEmployees = (req, res, next) => {
 module.exports = {
   createAccount: createAccount,
   getAllEmployees: getAllEmployees,
-  registerUser: registerUser
-  // loginUser: loginUser,
+  registerUser: registerUser,
+  loginUser: loginUser,
   // logoutuser: logoutUser,
 };

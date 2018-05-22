@@ -1,22 +1,19 @@
-const passport = require("passport");
-const db = require("../db/index");
+const passport = require("passport")
+const db = require('../db/index');
 
 module.exports = () => {
-  // store the user id on the session
   passport.serializeUser((user, done) => {
-    done(null, user);
+    done(null, user.email);
   });
 
-  // get user info from session
-  passport.deserializeUser((user, done) => {
-    console.log("desirealize");
-    db
-      .one("SELECT * FROM employees WHERE id=$1", [user.id])
-      .then(user => {
+  passport.deserializeUser((email, done) => {
+    db.one('SELECT * FROM users WHERE email = ${email}',
+           {email: email})
+      .then((user) => {
         done(null, user);
       })
-      .catch(err => {
+      .catch((err) => {
         done(err, null);
       });
   });
-};
+}
