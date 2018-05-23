@@ -5,8 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-const passport = require('passport');
 const session = require("express-session");
+const passport = require('passport');
+// var LocalStrategy = require('passport-local').Strategy; //added this from research i found
 
 
 var users = require('./routes/users');
@@ -31,6 +32,9 @@ app.use(
       saveUninitialized: true
   })
 );
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(express.static(path.join(__dirname, 'public')));
 

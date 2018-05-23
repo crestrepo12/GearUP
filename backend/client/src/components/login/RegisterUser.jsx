@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Route, Link, Switch, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import Home from "../Home";
 
 class RegisterUser extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       firstname: "",
@@ -47,35 +48,26 @@ class RegisterUser extends Component {
     }
 
     axios
-      .post("/users/create_account",
-        {
-          firstname: firstname,
-          lastname: lastname,
-          email: email,
-          password: password
-        })
+      .post("/users/create_account", {
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        password: password
+      })
       .then(res => {
+        // console.log("res: ===> " ,res)
+        var user = res.data.data;
+        console.log("user===> ", user)
         this.setState({
-          message: "account created",
-        })
-
-        axios
-          .post("/users/login", {
-            email: email,
-            password: password
-          })
-          .then(res => {
-            // redirect to user's profile
-            this.setState({
-              newEmployeeLogin: true
-            });
-          })
+          newEmployeeLogin: true,
+          message: "account created"
+        });
+      })
       .catch(err => {
-            console.log(err);
-            this.setState({
-              message: "an error has occurred"
-            });
-          });
+        console.log(err);
+        this.setState({
+          message: "an error has occurred"
+        });
       });
   };
 
@@ -89,21 +81,19 @@ class RegisterUser extends Component {
       newEmployeeLogin
     } = this.state;
 
-    const { 
-      inputOnChange,
-      submitRegisterForm
-    } = this;
+    // console.log("new employee state", this.state);
 
-    // if(newEmployeeLogin) {
-    //   console.log("new employee logged in");
-    //   const { id } = match.params;
-    //   return <Redirect to={`/employee/${id}`} />
-    // }
+    const { inputOnChange, submitRegisterForm } = this;
+
+    if (newEmployeeLogin) {
+      console.log("new employee logged in");
+      return <Redirect to={Home} />;
+    }
 
     return (
       <div className="register-page">
         <h1> Register Here </h1>
-        <form onSubmit={submitRegisterForm}> 
+        <form onSubmit={submitRegisterForm}>
           <input
             type="text"
             name="firstname"

@@ -10,7 +10,30 @@ import LoginUser from "./components/login/LoginUser";
 import RegisterUser from "./components/login/RegisterUser";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loggedInUser: ""
+    }
+  }
+
+  renderRegisterUser = () => {
+    return (
+    <RegisterUser
+      handleRegisterChange={this.handleRegisterChange}
+    />
+    );
+  }
+// res.data.data = user
+  handleRegisterChange = (loggedInUser) => {
+    this.setState({
+      loggedInUser: loggedInUser
+    });
+  } 
+
   render() {
+    const { renderRegisterUser } = this;
     return (
       <div className="App">
         <Navbar />
@@ -19,7 +42,7 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route path="/employee/" component={Caseload} />
           <Route path="/client/:id" component={Client} />
-          <Route path="/register" component={RegisterUser} />
+          <Route path="/register" render={renderRegisterUser} />
           <Route path="/login" component={LoginUser} />
         </Switch>
       </div>

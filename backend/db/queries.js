@@ -2,7 +2,7 @@ const db = require('./index');
 
 // importing to create hash for passwords
 const authHelpers = require("../auth/helpers");
-const passport = require("../auth/local");
+const passport = require("../auth/passport");
 
 const createAccount = (req, res, next) => {
   // frontend using password, backend using password_digest
@@ -10,7 +10,7 @@ const createAccount = (req, res, next) => {
   // console.log("createAccount hash: ", hash);
   db
     .none(
-      "INSERT INTO employees (email, password_digest, firstname, lastname) VALUES (${email}, ${password_digest}, ${firstname}, ${lastname})",
+      "INSERT INTO employees (firstname, lastname, email, password_digest ) VALUES ( ${firstname}, ${lastname}, ${email}, ${password_digest})",
       {
         firstname: req.body.firstname,
         lastname: req.body.lastname,
@@ -24,9 +24,17 @@ const createAccount = (req, res, next) => {
       }
     )
     .then(() => {
-      res.send(
-        `created employee account: ${req.body.email} - ${req.body.firstname + " " + req.body.lastname}.`
-      );
+      passport.authenticate("local", (err, user, info) => {
+                console.log('custom cb', user)
+                if (user) {
+                  res.status(200).json({
+                    status: "success",
+                    data: user,
+                    message: `created employee account: ${req.body.email} - ${req.body.firstname + " " + req.body.lastname}.`
+                  });
+                }
+              })(req, res, next);
+      
     })
     .catch(err => {
       console.log(err);
@@ -37,28 +45,30 @@ const createAccount = (req, res, next) => {
     });
 };
 
-function registerUser(req, res, next) {
-  return authHelpers
-    .createAccount(req)
-    .then(response => {
-      passport.authenticate("local", (err, user, info) => {
-        if (user) {
-          res.status(200).json({
-            status: "success",
-            data: user,
-            message: "Registered one user"
-          });
-        }
-      })(req, res, next);
-    })
-    .catch(err => {
-      console.log(error);
-      res.status(500).json({
-        status: "error",
-        error: err
-      });
-    });
-}
+// function registerUser(req, res, next) {
+//   console.log("before return")
+//   return authHelpers
+//     .createAccount(req)
+//     .then(response => {
+//       passport.authenticate("local", (err, user, info) => {
+//         console.log('custom cb', user)
+//         if (user) {
+//           res.status(200).json({
+//             status: "success",
+//             data: user,
+//             message: "Registered one user"
+//           });
+//         }
+//       })(req, res, next);
+//     })
+//     .catch(err => {
+//       console.log(error);
+//       res.status(500).json({
+//         status: "error",
+//         error: err
+//       });
+//     });
+// }
 
 const getAllEmployees = (req, res, next) => {
   db
@@ -99,10 +109,16 @@ const getAllEmployees = (req, res, next) => {
 //   return authenticate(req, res, next);
 // };
 
+function logoutUser(req, res, next) {
+  req.logout();
+  res.status(200).send("log out success");
+}
+
+
 module.exports = {
   createAccount: createAccount,
   getAllEmployees: getAllEmployees,
-  registerUser: registerUser,
-  loginUser: loginUser,
-  // logoutuser: logoutUser,
+  // registerUser: registerUser,
+  logoutUser: logoutUser,
+  // loginUser: loginUser,
 };
