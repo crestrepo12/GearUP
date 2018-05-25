@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Route, Link, Switch, Redirect } from 'react-router-dom';
-import Home from '../Home';
+import { Route, Link, Switch, Redirect } from "react-router-dom";
+import Home from "../Home";
 
 class LoginUser extends Component {
   constructor() {
@@ -10,8 +10,7 @@ class LoginUser extends Component {
     this.state = {
       email: "",
       password: "",
-      message: "",
-      loggedIn: false
+      message: ""
     };
   }
 
@@ -25,55 +24,45 @@ class LoginUser extends Component {
   submitLoginForm = e => {
     e.preventDefault();
 
-    const {
-      email,
-      password,
-      message,
-      loggedIn
-    } = this.state;
+    const { email, password, message } = this.state;
 
     axios
-      .get("/users/login", {
+      .post("/users/login", {
         email: email,
         password: password
       })
       .then(res => {
-        console.log(res);
-        this.setState({
-          loggedIn: true
-        });
+        var user = res.data.user;
+        this.props.handleLoginChange(user);
       })
       .catch(err => {
         console.log(err);
-        if(email === '' && password === '') {
+        if (email === "" && password === "") {
           this.setState({
-            message: '* Fill out required fields'
+            message: "* Fill out required fields"
           });
         } else {
           this.setState({
-            email: '',
-            password: '',
-            message: '* Email / Password Incorrect'
+            email: "",
+            password: "",
+            message: "* Email / Password Incorrect"
           });
         }
-      })
-  }
+      });
+  };
 
   render() {
-    const { email, password, message, loggedIn } = this.state;
+    const { email, password, message } = this.state;
     const { inputOnChange, submitLoginForm } = this;
 
-    if(loggedIn) {
-      return ( <Redirect to={Home} />)
-    }
     return (
       <div className="login-page">
         <h1> Login Here </h1>
-        <form>
+        <form onSubmit={submitLoginForm}>
           <input
             type="email"
             name="email"
-            value="email"
+            value={email}
             placeholder="Email"
             onChange={inputOnChange}
           />
@@ -85,9 +74,8 @@ class LoginUser extends Component {
             onChange={inputOnChange}
           />
           <input type="submit" value="Submit" />
-
-          <p> {message} </p>
         </form>
+        <p> {message} </p>
       </div>
     );
   }

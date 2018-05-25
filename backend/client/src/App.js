@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Route, Link, Switch } from "react-router-dom";
+import { Route, Link, Switch, Redirect } from "react-router-dom";
+import axios from "axios";
 import logo from "./logo.svg";
 import "./App.css";
 import Home from "./components/Home";
@@ -14,36 +15,83 @@ class App extends Component {
     super(props);
 
     this.state = {
-      loggedInUser: ""
-    }
+      loggedInUser: null, //if you have the user then you are logged in, this will contain a user objects
+      message: ''
+    };
   }
 
   renderRegisterUser = () => {
-    return (
-    <RegisterUser
-      handleRegisterChange={this.handleRegisterChange}
-    />
-    );
-  }
-// res.data.data = user
-  handleRegisterChange = (loggedInUser) => {
-    this.setState({
-      loggedInUser: loggedInUser
-    });
-  } 
+    return <RegisterUser handleRegisterChange={this.handleRegisterChange} />;
+  };
+
+  handleRegisterChange = loggedInUser => {
+    if (loggedInUser !== null) {
+      this.setState({
+        loggedInUser: loggedInUser
+      });
+    }
+  };
+
+  renderLoginUser = () => {
+    return <LoginUser handleLoginChange={this.handleLoginChange} />;
+  };
+
+  handleLoginChange = loggedInUser => {
+    if (loggedInUser !== null) {
+      this.setState({
+        loggedInUser: loggedInUser
+      });
+    }
+  };
+
+  logOutUser = () => {
+    axios
+      .get("/users/logout")
+      .then(res => {
+        console.log("logout res:", res);
+        this.setState({
+          loggedInUser: null
+        });
+      })
+      .catch(err => {
+        console.log(err);
+        this.setState({
+          message: err
+        })
+      });
+  };
 
   render() {
-    const { renderRegisterUser } = this;
+    const { loggedInUser, logOutUser } = this.state;
+    const { renderRegisterUser, renderLoginUser } = this;
     return (
       <div className="App">
-        <Navbar />
+        <Navbar loggedInUser={loggedInUser} logOutUser={logOutUser} />
 
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/employee/" component={Caseload} />
-          <Route path="/client/:id" component={Client} />
-          <Route path="/register" render={renderRegisterUser} />
-          <Route path="/login" component={LoginUser} />
+          <Route
+            exact
+            path="/"
+            render={() =>
+              loggedInUser ? <Redirect to="/dashboard" /> : <Home />
+            }
+          />
+          <Route
+            path="/dashboard"
+            render={() => (loggedInUser ? <Caseload /> : <Redirect to="/" />)}
+          />
+          <Route
+            path="/client/:id"
+            render={() => (loggedInUser ? <Client /> : <Redirect to="/" />)}
+          />
+          <Route
+            path="/register"
+            render={() => (loggedInUser ? <Caseload /> : renderRegisterUser())}
+          />
+          <Route
+            path="/login"
+            render={() => (loggedInUser ? <Caseload /> : renderLoginUser())}
+          />
         </Switch>
       </div>
     );

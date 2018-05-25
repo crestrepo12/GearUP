@@ -13,7 +13,6 @@ class RegisterUser extends Component {
       email: "",
       password: "",
       confirm_password: "",
-      newEmployeeLogin: false,
       message: ""
     };
   }
@@ -57,9 +56,9 @@ class RegisterUser extends Component {
       .then(res => {
         // console.log("res: ===> " ,res)
         var user = res.data.data;
+        this.props.handleRegisterChange(user);
         console.log("user===> ", user)
         this.setState({
-          newEmployeeLogin: true,
           message: "account created"
         });
       })
@@ -77,18 +76,12 @@ class RegisterUser extends Component {
       lastname,
       email,
       password,
-      confirm_password,
-      newEmployeeLogin
+      confirm_password
     } = this.state;
 
     // console.log("new employee state", this.state);
 
     const { inputOnChange, submitRegisterForm } = this;
-
-    if (newEmployeeLogin) {
-      console.log("new employee logged in");
-      return <Redirect to={Home} />;
-    }
 
     return (
       <div className="register-page">

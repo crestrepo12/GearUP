@@ -45,31 +45,6 @@ const createAccount = (req, res, next) => {
     });
 };
 
-// function registerUser(req, res, next) {
-//   console.log("before return")
-//   return authHelpers
-//     .createAccount(req)
-//     .then(response => {
-//       passport.authenticate("local", (err, user, info) => {
-//         console.log('custom cb', user)
-//         if (user) {
-//           res.status(200).json({
-//             status: "success",
-//             data: user,
-//             message: "Registered one user"
-//           });
-//         }
-//       })(req, res, next);
-//     })
-//     .catch(err => {
-//       console.log(error);
-//       res.status(500).json({
-//         status: "error",
-//         error: err
-//       });
-//     });
-// }
-
 const getAllEmployees = (req, res, next) => {
   db
     .any(
@@ -118,7 +93,5 @@ function logoutUser(req, res, next) {
 module.exports = {
   createAccount: createAccount,
   getAllEmployees: getAllEmployees,
-  // registerUser: registerUser,
-  logoutUser: logoutUser,
-  // loginUser: loginUser,
+  logoutUser: logoutUser
 };
