@@ -32,7 +32,9 @@ class LoginUser extends Component {
         password: password
       })
       .then(res => {
+        console.log("res loginpage: => ", res)
         var user = res.data.user;
+        console.log("loginpage user:", user)
         this.props.handleLoginChange(user);
       })
       .catch(err => {

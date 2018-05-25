@@ -1,4 +1,4 @@
-const db = require('./index');
+const db = require("./index");
 
 // importing to create hash for passwords
 const authHelpers = require("../auth/helpers");
@@ -15,7 +15,7 @@ const createAccount = (req, res, next) => {
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         email: req.body.email,
-        password_digest: hash,
+        password_digest: hash
         // occupation: req.body.occupation,
         // gender: req.body.gender,
         // bio: req.body.bio,
@@ -25,16 +25,25 @@ const createAccount = (req, res, next) => {
     )
     .then(() => {
       passport.authenticate("local", (err, user, info) => {
-                console.log('custom cb', user)
-                if (user) {
-                  res.status(200).json({
-                    status: "success",
-                    data: user,
-                    message: `created employee account: ${req.body.email} - ${req.body.firstname + " " + req.body.lastname}.`
-                  });
-                }
-              })(req, res, next);
-      
+        console.log("custom cb", user);
+        if (err) {
+          return next(err);
+        }
+        req.login(user, err => {
+          if (err) {
+            return next(err);
+          }
+          res.status(200)
+              .json({
+            status: "success",
+            user: req.user,
+            message: `created employee account: ${req.body.email} - ${req.body
+              .firstname +
+              " " +
+              req.body.lastname}.`
+          });
+        });
+      })(req, res, next);
     })
     .catch(err => {
       console.log(err);
@@ -63,32 +72,14 @@ const getAllEmployees = (req, res, next) => {
     });
 };
 
-// const loginUser = (req, res, next) => {
-//   console.log("trying to login user", req.body);
-//   passport.authenticate("local", {});
-//   const authenticate = passport.authenticate("local", (err, user, info) => {
-//     if (err) {
-//       res.status(500).send("error while trying to log in");
-//     } else if (!user) {
-//       res.status(401).send("invalid email/password");
-//     } else if (user) {
-//       req.logIn(user, function (err) {
-//         if (err) {
-//           res.status(500).send("error");
-//         } else {
-//           res.status(200).send({ ...req.user, password_digest: null });
-//         }
-//       });
-//     }
-//   });
-//   return authenticate(req, res, next);
-// };
-
 function logoutUser(req, res, next) {
   req.logout();
   res.status(200).send("log out success");
 }
 
+const getAllClientsByEmployee = (req, res, next) => {
+  db.any("SELECT FROM WHEN");
+};
 
 module.exports = {
   createAccount: createAccount,

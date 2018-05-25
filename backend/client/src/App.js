@@ -16,7 +16,7 @@ class App extends Component {
 
     this.state = {
       loggedInUser: null, //if you have the user then you are logged in, this will contain a user objects
-      message: ''
+      message: ""
     };
   }
 
@@ -25,11 +25,9 @@ class App extends Component {
   };
 
   handleRegisterChange = loggedInUser => {
-    if (loggedInUser !== null) {
-      this.setState({
-        loggedInUser: loggedInUser
-      });
-    }
+    this.setState({
+      loggedInUser: loggedInUser
+    });
   };
 
   renderLoginUser = () => {
@@ -37,33 +35,23 @@ class App extends Component {
   };
 
   handleLoginChange = loggedInUser => {
-    if (loggedInUser !== null) {
-      this.setState({
-        loggedInUser: loggedInUser
-      });
-    }
+    this.setState({
+      loggedInUser: loggedInUser
+    });
   };
 
   logOutUser = () => {
-    axios
-      .get("/users/logout")
-      .then(res => {
-        console.log("logout res:", res);
-        this.setState({
-          loggedInUser: null
-        });
-      })
-      .catch(err => {
-        console.log(err);
-        this.setState({
-          message: err
-        })
-      });
+    this.setState({
+      loggedInUser: null
+    });
   };
 
   render() {
-    const { loggedInUser, logOutUser } = this.state;
-    const { renderRegisterUser, renderLoginUser } = this;
+    const { loggedInUser } = this.state;
+    const { renderRegisterUser, renderLoginUser, logOutUser } = this;
+
+    console.log("current logged in user ====> ", loggedInUser);
+    console.log("render register",renderRegisterUser)
     return (
       <div className="App">
         <Navbar loggedInUser={loggedInUser} logOutUser={logOutUser} />

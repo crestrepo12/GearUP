@@ -1,21 +1,37 @@
 import React, { Component, Fragment } from "react";
 import { Link, Route, Switch } from "react-router-dom";
+import axios from "axios";
 
 class Navbar extends Component {
   constructor(props) {
     super(props);
   }
 
+  signOutUser = () => {
+    axios
+      .get("/users/logout")
+      .then(res => {
+        console.log("signout res",res)
+        console.log("current user when logged out", this.props.loggedInUser);
+        this.props.logOutUser();
+      })
+      .catch(err => {
+        console.log(err);
+        this.setState({
+          message: err
+        });
+      });
+  };
+
   navbarUserLoggedIn = () => {
     const { logOutUser } = this.props;
     return (
       <nav id="navigation-bar">
         <Link to="/">
-          {" "}
-          <h2>GearUP</h2>{" "}
+          <h2>GearUP</h2>
         </Link>
         <Link to="/dashboard"> Clients </Link>
-        <input type="button" value="Log Out" onClick={logOutUser}/>
+        <input type="button" value="Log Out" onClick={this.signOutUser} />
       </nav>
     );
   };
@@ -24,8 +40,7 @@ class Navbar extends Component {
     return (
       <nav id="navigation-bar">
         <Link to="/">
-          {" "}
-          <h2>GearUP</h2>{" "}
+          <h2>GearUP</h2>
         </Link>
         <Link to="/dashboard"> Clients </Link>
         <Link to="/register"> Register </Link>

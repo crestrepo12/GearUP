@@ -54,13 +54,11 @@ class RegisterUser extends Component {
         password: password
       })
       .then(res => {
-        // console.log("res: ===> " ,res)
-        var user = res.data.data;
+        console.log("register res =+> ",res)
+        var user = res.data.user;
         this.props.handleRegisterChange(user);
         console.log("user===> ", user)
-        this.setState({
-          message: "account created"
-        });
+
       })
       .catch(err => {
         console.log(err);
@@ -78,8 +76,6 @@ class RegisterUser extends Component {
       password,
       confirm_password
     } = this.state;
-
-    // console.log("new employee state", this.state);
 
     const { inputOnChange, submitRegisterForm } = this;
 

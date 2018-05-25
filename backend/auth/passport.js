@@ -10,7 +10,6 @@ const options = {
   passwordField: "password"
 };
 
-console.log("passport.js file is being read");
 passport.serializeUser((user, done) => {
   console.log("serializeUser");
   done(null, user.email);

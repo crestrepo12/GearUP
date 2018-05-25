@@ -85,7 +85,7 @@ CREATE TABLE employee_clients_list (
 
 INSERT INTO employees (firstname, lastname, email, password_digest, occupation, gender, bio, zipcode, phone_number, imgurl)
   VALUES
-  ('carol', 'rest', 'carestrepo@mail.com', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'MSW', 'Female', '12 years in Social Work, helping clients become more dependent on themselves and financially independent', '11215', '696-453-1121', 'http://flaticons.net/gd/makefg.php?i=icons/People/Employee.png&r=255&g=255&b=255'),
+  ('carol', 'rest', 'ca@mail.com', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'MSW', 'Female', '12 years in Social Work, helping clients become more dependent on themselves and financially independent', '11215', '696-453-1121', 'http://flaticons.net/gd/makefg.php?i=icons/People/Employee.png&r=255&g=255&b=255'),
   ('mike', 'mcd', 'mcdonald@mail.com', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'MSW', 'Male', '7 years in Social Work, helping clients become more dependent on themselves and financially independent', '10019', '696-425-1346','http://flaticons.net/gd/makefg.php?i=icons/People/Employee.png&r=255&g=255&b=255');
 
 
