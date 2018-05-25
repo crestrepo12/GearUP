@@ -11,8 +11,6 @@ class Navbar extends Component {
     axios
       .get("/users/logout")
       .then(res => {
-        console.log("signout res",res)
-        console.log("current user when logged out", this.props.loggedInUser);
         this.props.logOutUser();
       })
       .catch(err => {

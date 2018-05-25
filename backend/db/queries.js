@@ -78,11 +78,27 @@ function logoutUser(req, res, next) {
 }
 
 const getAllClientsByEmployee = (req, res, next) => {
-  db.any("SELECT FROM WHEN");
+  db.any('SELECT * FROM clients JOIN employee_clients_list ON clients.id=employee_clients_list.client_id WHERE employee_clients_list.employee_id=${employee_id}', req.params)
+  .then(clients => {
+    res.status(200)
+    .json({
+      status: 'success',
+      clients: clients,
+      message: `Retrieved ${clients.length} clients`
+    });
+  })
 };
+
+// const getOneClientByEmployee = (req, res, next) => {
+//   db
+//     .one('SELECT * FROM clients JOIN employee_clients_list ON clients.id=employee_clients_list.client_id WHERE employee_clients_list.employee_id=${employee_id}')
+// }
+
+
 
 module.exports = {
   createAccount: createAccount,
   getAllEmployees: getAllEmployees,
-  logoutUser: logoutUser
+  logoutUser: logoutUser,
+  getAllClientsByEmployee: getAllClientsByEmployee,
 };

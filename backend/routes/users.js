@@ -31,12 +31,12 @@ router.post('/login', (req, res, next) => {
 
 });
 
-
 // Get Methods
 router.get('/', (req, res, next) => res.status(200)
 .send({title: "hello"}));
 router.get('/logout', loginRequired, db.logoutUser);
 router.get('/all_employees', passport.authenticate('local'), db.getAllEmployees);
+router.get('/clients/:employee_id', db.getAllClientsByEmployee);
 
 // Patch Methods 
 
