@@ -18,7 +18,7 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((email, done) => {
   console.log("deserialize user");
   db
-    .one("SELECT * FROM employees WHERE email = ${email}", { email: email })
+    .one("SELECT * FROM providers WHERE email = ${email}", { email: email })
     .then(user => {
       done(null, user);
     })
@@ -33,7 +33,7 @@ passport.use(
   new LocalStrategy(options, (email, password, done) => {
     // console.log("trying to authenticate");
     db
-      .any("SELECT * FROM employees WHERE email=$1", [email])
+      .any("SELECT * FROM providers WHERE email=$1", [email])
       .then(rows => {
         const user = rows[0];
         // console.log("user: ", user);

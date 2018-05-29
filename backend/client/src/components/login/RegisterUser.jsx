@@ -18,7 +18,6 @@ class RegisterUser extends Component {
   }
 
   inputOnChange = e => {
-    console.log("input: ", e.target.value);
     this.setState({
       [e.target.name]: e.target.value
     });
@@ -54,11 +53,8 @@ class RegisterUser extends Component {
         password: password
       })
       .then(res => {
-        console.log("register res =+> ",res)
         var user = res.data.user;
         this.props.handleRegisterChange(user);
-        console.log("user===> ", user)
-
       })
       .catch(err => {
         console.log(err);

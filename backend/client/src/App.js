@@ -5,8 +5,8 @@ import logo from "./logo.svg";
 import "./App.css";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
-import Caseload from "./components/employees/Caseload";
-import Client from "./components/employees/Client";
+import Caseload from "./components/providers/Caseload";
+import Client from "./components/providers/Client";
 import LoginUser from "./components/login/LoginUser";
 import RegisterUser from "./components/login/RegisterUser";
 
@@ -16,7 +16,7 @@ class App extends Component {
 
     this.state = {
       loggedInUser: null, //if you have the user then you are logged in, this will contain a user objects
-      message: ""
+      message: "",
     };
   }
 
@@ -61,11 +61,11 @@ class App extends Component {
             exact
             path="/"
             render={() =>
-              loggedInUser ? <Redirect to="/dashboard" /> : <Home />
+              loggedInUser ? <Redirect to="/caseload" /> : <Home />
             }
           />
           <Route
-            path="/dashboard"
+            path="/caseload"
             render={() => (loggedInUser ? <Caseload /> : <Redirect to="/" />)}
           />
           <Route

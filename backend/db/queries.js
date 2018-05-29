@@ -10,7 +10,7 @@ const createAccount = (req, res, next) => {
   // console.log("createAccount hash: ", hash);
   db
     .none(
-      "INSERT INTO employees (firstname, lastname, email, password_digest ) VALUES ( ${firstname}, ${lastname}, ${email}, ${password_digest})",
+      "INSERT INTO providers (firstname, lastname, email, password_digest ) VALUES ( ${firstname}, ${lastname}, ${email}, ${password_digest})",
       {
         firstname: req.body.firstname,
         lastname: req.body.lastname,
@@ -54,21 +54,21 @@ const createAccount = (req, res, next) => {
     });
 };
 
-const getAllEmployees = (req, res, next) => {
+const getAllproviders = (req, res, next) => {
   db
     .any(
-      "SELECT email, firstname, lastname, occupation, gender, bio, zipcode FROM employees"
+      "SELECT email, firstname, lastname, occupation, gender, bio, zipcode FROM providers"
     )
-    .then(employees => {
+    .then(providers => {
       res.status(200).json({
         status: "success",
-        employees: employees,
-        message: `Retrieved all ${employees.length} employees`
+        providers: providers,
+        message: `Retrieved all ${providers.length} providers`
       });
     })
     .catch(err => {
       console.log(err);
-      res.status(500).send("error in fetching employees");
+      res.status(500).send("error in fetching providers");
     });
 };
 
@@ -77,8 +77,20 @@ function logoutUser(req, res, next) {
   res.status(200).send("log out success");
 }
 
-const getAllClientsByEmployee = (req, res, next) => {
-  db.any('SELECT * FROM clients JOIN employee_clients_list ON clients.id=employee_clients_list.client_id WHERE employee_clients_list.employee_id=${employee_id}', req.params)
+// const getAllClientsByEmployee = (req, res, next) => {
+//   db.any('SELECT * FROM clients JOIN employee_clients_list ON clients.id=employee_clients_list.client_id WHERE employee_clients_list.employee_id=${employee_id}', req.params)
+//   .then(clients => {
+//     res.status(200)
+//     .json({
+//       status: 'success',
+//       clients: clients,
+//       message: `Retrieved ${clients.length} clients`
+//     });
+//   })
+// };
+
+const getAllClients= (req, res, next) => {
+  db.any('SELECT * FROM clients ', req.params)
   .then(clients => {
     res.status(200)
     .json({
@@ -98,7 +110,7 @@ const getAllClientsByEmployee = (req, res, next) => {
 
 module.exports = {
   createAccount: createAccount,
-  getAllEmployees: getAllEmployees,
+  getAllproviders: getAllproviders,
   logoutUser: logoutUser,
   getAllClientsByEmployee: getAllClientsByEmployee,
 };

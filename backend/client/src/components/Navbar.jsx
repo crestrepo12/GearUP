@@ -28,7 +28,7 @@ class Navbar extends Component {
         <Link to="/">
           <h2>GearUP</h2>
         </Link>
-        <Link to="/dashboard"> Clients </Link>
+        <Link to="/caseload"> Clients </Link>
         <input type="button" value="Log Out" onClick={this.signOutUser} />
       </nav>
     );
@@ -40,7 +40,7 @@ class Navbar extends Component {
         <Link to="/">
           <h2>GearUP</h2>
         </Link>
-        <Link to="/dashboard"> Clients </Link>
+        <Link to="/caseload"> Clients </Link>
         <Link to="/register"> Register </Link>
         <Link to="/login"> Log In </Link>
       </nav>
