@@ -14,7 +14,7 @@ CREATE TABLE providers (
   bio VARCHAR,
 	zipcode VARCHAR,
   phone_number VARCHAR(12),
-	imgurl VARCHAR DEFAULT 'http://flaticons.net/gd/makefg.php?i=icons/People/provider.png&r=255&g=255&b=255',
+	imgurl VARCHAR DEFAULT '../client/images/User-Profile-256.png',
   company_name VARCHAR
 );
 
@@ -29,7 +29,7 @@ CREATE TABLE clients (
   residential_address VARCHAR NOT NULL,
 	zipcode VARCHAR NOT NULL,
   phone_number VARCHAR(12) NOT NULL,
-	imgurl VARCHAR DEFAULT 'http://flaticons.net/gd/makefg.php?i=icons/People/provider.png&r=255&g=255&b=255',
+	imgurl VARCHAR DEFAULT '../client/images/User-Profile-256.png',
   bio VARCHAR,
   disability VARCHAR,
   medicaid boolean,
@@ -89,7 +89,7 @@ INSERT INTO clients (firstname, lastname, email, age, occupation, gender, reside
   VALUES 
   ('Chadd', 'Lepere', 'clepere0@webnode.com', 12, 'Clinical Specialist', 'Male', '64393 Gateway Hill, NYC, NY', '10019', '681-833-4858', 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=140', 'Hello my name is _______, I come from _________. When I grow up, I would like to be a ________________.', 'autism spectrum', false, 1),
   ('Camella', 'Antrobus', 'cantrobus1@noaa.gov', 27, 'Graphic Designer', 'Female', '2 Helena Junction, NYC, NY', '10019', '268-109-7437', 'http://flaticons.net/gd/makefg.php?i=icons/People/provider.png&r=255&g=255&b=255', 'Hello my name is _______, I come from _________. When I grow up, I would like to be a ________________.', 'autism spectrum', true, 2),
-  ('Blondie', 'Andreaccio', 'bandreaccio2@pbs.org', 27, 'Quality Control Specialist', 'Female', '6 Stephen Place, NYC, NY', '10019', '239-270-6423', 'http://flaticons.net/gd/makefg.php?i=icons/People/provider.png&r=255&g=255&b=255', 'Hello my name is _______, I come from _________. When I grow up, I would like to be a ________________.', 'autism spectrum', false, 1),
+  ('Blondie', 'Andreaccio', 'bandreaccio2@pbs.org', 27, 'Quality Control Specialist', 'Female', '6 Stephen Place, NYC, NY', '10019', '239-270-6423', 'User-Profile-256.png', 'Hello my name is _______, I come from _________. When I grow up, I would like to be a ________________.', 'autism spectrum', false, 1),
   ('Shaine', 'Carrol', 'scarrol3@tumblr.com', 15, 'Automation Specialist II', 'Male', '470 Twin Pines Circle, NYC, NY', '10019', '583-929-9660', 'http://flaticons.net/gd/makefg.php?i=icons/People/provider.png&r=255&g=255&b=255', 'Hello my name is _______, I come from _________. When I grow up, I would like to be a ________________.', 'autism spectrum', false, 2),
   ('Christoph', 'Lieb', 'clieb4@senate.gov', 13, 'Systems Administrator II', 'Male', '1842 Emmet Drive, NYC, NY', '10019', '173-184-3962', 'http://flaticons.net/gd/makefg.php?i=icons/People/provider.png&r=255&g=255&b=255', 'Hello my name is _______, I come from _________. When I grow up, I would like to be a ________________.', 'autism spectrum', true, 1),
   ('Vinita', 'Jedrzejewsky', 'vjedrzejewsky5@bluehost.com', 19, 'Nuclear Power Engineer', 'Female', '43366 Trailsway Way, NYC, NY', '10019', '982-380-3384', 'http://flaticons.net/gd/makefg.php?i=icons/People/provider.png&r=255&g=255&b=255', 'Hello my name is _______, I come from _________. When I grow up, I would like to be a ________________.', 'autism spectrum', false, 2),
