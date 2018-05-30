@@ -51,7 +51,7 @@ class App extends Component {
     const { renderRegisterUser, renderLoginUser, logOutUser } = this;
 
     console.log("current logged in user ====> ", loggedInUser);
-    console.log("render register",renderRegisterUser)
+  
     return (
       <div className="App">
         <Navbar loggedInUser={loggedInUser} logOutUser={logOutUser} />

@@ -10,7 +10,8 @@ class LoginUser extends Component {
     this.state = {
       email: "",
       password: "",
-      message: ""
+      message: "",
+      guestLogin: null
     };
   }
 
@@ -53,9 +54,39 @@ class LoginUser extends Component {
       });
   };
 
+  handleGuestLogin = e => {
+    e.preventDefault();
+
+    const { email, password, message } = this.state;
+
+    axios
+      .post("/users/login", {
+        email: "ca@mail.com",
+        password: "testpass"
+      })
+      .then(res => {
+        var user = res.data.user;
+        this.props.handleLoginChange(user);
+      })
+      .catch(err => {
+        console.log(err);
+        if (email === "" && password === "") {
+          this.setState({
+            message: "* Fill out required fields"
+          });
+        } else {
+          this.setState({
+            email: "",
+            password: "",
+            message: "* Email / Password Incorrect"
+          });
+        }
+      });
+  }
+
   render() {
     const { email, password, message } = this.state;
-    const { inputOnChange, submitLoginForm } = this;
+    const { inputOnChange, submitLoginForm, handleGuestLogin } = this;
 
     return (
       <div className="login-page">
@@ -77,6 +108,7 @@ class LoginUser extends Component {
           />
           <input type="submit" value="Submit" />
         </form>
+          <input type="button" value="Guest Login" onClick={handleGuestLogin}/>
         <p> {message} </p>
       </div>
     );

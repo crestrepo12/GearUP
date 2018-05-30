@@ -37,7 +37,7 @@ const createAccount = (req, res, next) => {
               .json({
             status: "success",
             user: req.user,
-            message: `created employee account: ${req.body.email} - ${req.body
+            message: `created provider account: ${req.body.email} - ${req.body
               .firstname +
               " " +
               req.body.lastname}.`
@@ -48,13 +48,13 @@ const createAccount = (req, res, next) => {
     .catch(err => {
       console.log(err);
       res.status(500).json({
-        message: "error creating employee account",
+        message: "error creating provider account",
         err
       });
     });
 };
 
-const getAllproviders = (req, res, next) => {
+const getAllProviders = (req, res, next) => {
   db
     .any(
       "SELECT email, firstname, lastname, occupation, gender, bio, zipcode FROM providers"
@@ -77,20 +77,8 @@ function logoutUser(req, res, next) {
   res.status(200).send("log out success");
 }
 
-// const getAllClientsByEmployee = (req, res, next) => {
-//   db.any('SELECT * FROM clients JOIN employee_clients_list ON clients.id=employee_clients_list.client_id WHERE employee_clients_list.employee_id=${employee_id}', req.params)
-//   .then(clients => {
-//     res.status(200)
-//     .json({
-//       status: 'success',
-//       clients: clients,
-//       message: `Retrieved ${clients.length} clients`
-//     });
-//   })
-// };
-
-const getAllClients= (req, res, next) => {
-  db.any('SELECT * FROM clients ', req.params)
+const getAllClientsByProviderId= (req, res, next) => {
+  db.any('SELECT * FROM clients WHERE provider_id = ${provider_id}', {provider_id: req.params.provider_id})
   .then(clients => {
     res.status(200)
     .json({
@@ -101,16 +89,9 @@ const getAllClients= (req, res, next) => {
   })
 };
 
-// const getOneClientByEmployee = (req, res, next) => {
-//   db
-//     .one('SELECT * FROM clients JOIN employee_clients_list ON clients.id=employee_clients_list.client_id WHERE employee_clients_list.employee_id=${employee_id}')
-// }
-
-
-
 module.exports = {
-  createAccount: createAccount,
-  getAllproviders: getAllproviders,
-  logoutUser: logoutUser,
-  getAllClientsByEmployee: getAllClientsByEmployee,
+  createAccount,
+  getAllProviders,
+  logoutUser,
+  getAllClientsByProviderId,
 };

@@ -11,14 +11,17 @@ class Caseload extends Component {
   }
 
   getClients = () => {
-    //have to grab employee id from current logged in user state
+    //have to grab provider id from current logged in user state
     // const user = this.props.loggedInUser;
     // console.log("prop user: ", user);
-    const { employee_id } = this.state.match.params;
+    const { provider_id } = this.state.match.params;
     axios
-      .get(`/users/clients/${employee_id}`)
+      .get(`/users/clients/${provider_id}`)
       .then(res => {
         console.log("clients caseload res", res);
+        this.setState({
+          clients: res.data.user
+        })
       })
       .catch(err => {
         console.log(err);
@@ -30,9 +33,13 @@ class Caseload extends Component {
   // }
 
   render() {
+    const { clients } = this.state;
     return (
       <div id="caseload">
         <h1>Caseload</h1>
+        <div>{clients.map( client => {
+          return <h3>{`Client ${client.id}: ${client.firstname} ${client.lastname}`}</h3>
+        })}</div>
       </div>
     );
   }

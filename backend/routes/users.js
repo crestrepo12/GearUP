@@ -35,8 +35,8 @@ router.post('/login', (req, res, next) => {
 router.get('/', (req, res, next) => res.status(200)
 .send({title: "hello"}));
 router.get('/logout', loginRequired, db.logoutUser);
-router.get('/all_providers', passport.authenticate('local'), db.getAllproviders);
-router.get('/clients', db.getAllClientsByEmployee);
+router.get('/all_providers', passport.authenticate('local'), db.getAllProviders);
+router.get('/clients/:provider_id', db.getAllClientsByProviderId);
 
 // Patch Methods 
 
