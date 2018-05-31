@@ -89,9 +89,22 @@ const getAllClientsByProviderId= (req, res, next) => {
   })
 };
 
+const getClientById = (req, res, next) => {
+  db.any('SELECT * FROM clients WHERE id=${id}', {id: req.params.id})
+  .then(client => {
+    res.status(200)
+    .json({
+      status: 'success',
+      client: client,
+      message: `Retrieved #${client[0].id}: ${client[0].firstname} ${client[0].lastname}`
+    })
+  })
+}
+
 module.exports = {
   createAccount,
   getAllProviders,
   logoutUser,
   getAllClientsByProviderId,
+  getClientById,
 };

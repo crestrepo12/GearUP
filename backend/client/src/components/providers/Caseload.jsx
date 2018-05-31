@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from "react";
 import { Link, Route, Switch } from "react-router-dom";
 import axios from "axios";
+import ClientCard from "./ClientCard";
+// import Client from "./Client";
 
 class Caseload extends Component {
   constructor() {
@@ -26,31 +28,15 @@ class Caseload extends Component {
       });
   }
 
-  // componentDidMount() {
-  //   this.getClients();
-  // }
-
   render() {
+    const {loggedInUser} = this.props;
     const { clients } = this.state;
     return (
       <div id="caseload">
 
         <h1>Caseload</h1>
 
-        <div>
-
-          {clients.map(client => {
-            return (
-              <div key={client.id}> 
-
-              <img src={client.imgurl} alt={client.firstname} /> 
-              <h3>{`${client.firstname} ${client.lastname}`}</h3>
-              
-              </div>
-            );
-          })}
-          
-        </div>
+        <ClientCard loggedInUser={loggedInUser} clients={clients}/>
 
       </div>
     );

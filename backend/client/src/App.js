@@ -51,9 +51,14 @@ class App extends Component {
     return <Caseload loggedInUser={loggedInUser} />
   }
 
+  renderClient = () => {
+    const {loggedInUser} = this.state;
+    return <Client loggedInUser={loggedInUser}/>
+  }
+
   render() {
     const { loggedInUser } = this.state;
-    const { renderRegisterUser, renderLoginUser, logOutUser, renderCaseload } = this;
+    const { renderRegisterUser, renderLoginUser, logOutUser, renderCaseload, renderClient } = this;
 
     console.log("current logged in user ====> ", loggedInUser);
   
@@ -74,8 +79,8 @@ class App extends Component {
             render={() => (loggedInUser ? renderCaseload() : <Redirect to="/" />)}
           />
           <Route
-            path="/client/:id"
-            render={() => (loggedInUser ? <Client /> : <Redirect to="/" />)}
+            path="/client/:client_id"
+            render={() => (loggedInUser ? renderClient() : <Redirect to="/" />)}
           />
           <Route
             path="/register"
@@ -83,7 +88,7 @@ class App extends Component {
           />
           <Route
             path="/login"
-            render={() => (loggedInUser ? renderCaseload() : renderLoginUser())}
+            render={() => (loggedInUser ? (renderCaseload() && <Redirect to="/caseload" /> ): (renderLoginUser()))}
           />
         </Switch>
       </div>
