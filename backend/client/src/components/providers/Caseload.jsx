@@ -8,7 +8,8 @@ class Caseload extends Component {
   constructor() {
     super();
     this.state = {
-      clients: []
+      clients: [],
+      message: ""
     };
   }
 
@@ -25,19 +26,20 @@ class Caseload extends Component {
       })
       .catch(err => {
         console.log(err);
+        this.setState({
+          message: "There is an error in fetching a list of clients"
+        });
       });
   }
 
   render() {
-    const {loggedInUser} = this.props;
+    const { loggedInUser } = this.props;
     const { clients } = this.state;
     return (
       <div id="caseload">
-
         <h1>Caseload</h1>
 
-        <ClientCard loggedInUser={loggedInUser} clients={clients}/>
-
+        <ClientCard loggedInUser={loggedInUser} clients={clients} />
       </div>
     );
   }

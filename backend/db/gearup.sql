@@ -14,7 +14,7 @@ CREATE TABLE providers (
   bio VARCHAR,
 	zipcode VARCHAR,
   phone_number VARCHAR(12),
-	imgurl VARCHAR DEFAULT 'images/User-Profile-256.png',
+	imgurl VARCHAR DEFAULT '/images/User-Profile-256.png',
   company_name VARCHAR
 );
 
@@ -29,7 +29,7 @@ CREATE TABLE clients (
   residential_address VARCHAR NOT NULL,
 	zipcode VARCHAR NOT NULL,
   phone_number VARCHAR(12) NOT NULL,
-	imgurl VARCHAR DEFAULT 'images/User-Profile-256.png',
+	imgurl VARCHAR DEFAULT '/images/User-Profile-256.png',
   bio VARCHAR,
   disability VARCHAR,
   medicaid boolean,

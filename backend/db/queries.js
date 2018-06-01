@@ -90,7 +90,7 @@ const getAllClientsByProviderId= (req, res, next) => {
 };
 
 const getClientById = (req, res, next) => {
-  db.any('SELECT * FROM clients WHERE id=${id}', {id: req.params.id})
+  db.any('SELECT * FROM clients WHERE id=${id}', {id: req.params.client_id})
   .then(client => {
     res.status(200)
     .json({

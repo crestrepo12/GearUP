@@ -1,32 +1,29 @@
-import react from 'react';
-import React, { Component} from "react";
+import react from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 class ClientCard extends Component {
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+  }
 
-    render() {
-        const {clients} = this.props;
-        console.log("client card: ++ ", clients)
-        return (
-            <div>
+  render() {
+    const { clients } = this.props;
 
-          {clients.map(client => {
-            return (
-              <Link to={`/client/${client.id}`} key={client.id} replace > 
-
-              <img src={client.imgurl} alt={client.firstname} /> 
+    return (
+      <div>
+        {clients.map(client => {
+          return (
+            <Link to={`/client/${client.id}`} key={client.id}>
+              <img src={client.imgurl} alt={client.firstname} />
               <h3>{`${client.firstname} ${client.lastname}`}</h3>
 
-              </Link>
-            );
-          })}
-
-        </div>
-        )
-    }
+            </Link>
+          );
+        })}
+      </div>
+    );
+  }
 }
 
 export default ClientCard;
