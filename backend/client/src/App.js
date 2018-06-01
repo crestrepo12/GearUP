@@ -9,14 +9,15 @@ import Caseload from "./components/providers/Caseload";
 import Client from "./components/providers/Client";
 import LoginUser from "./components/login/LoginUser";
 import RegisterUser from "./components/login/RegisterUser";
+import JourneyTrack from "./components/providers/JourneyTrack"
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      loggedInUser: null, 
-      message: "",
+      loggedInUser: null,
+      message: ""
     };
   }
 
@@ -47,21 +48,31 @@ class App extends Component {
   };
 
   renderCaseload = () => {
-    const {loggedInUser} = this.state;
-    return <Caseload loggedInUser={loggedInUser} />
-  }
+    const { loggedInUser } = this.state;
+    return <Caseload loggedInUser={loggedInUser} />;
+  };
 
-  renderClient = (routeProps) => {
-    console.log("routeProps:", routeProps)
-    return <Client client_id={routeProps.match.params.client_id} />
+  renderClient = routeProps => {
+    return <Client client_id={routeProps.match.params.client_id} />;
+  };
+
+  renderJourneyTrack = routeProps => {
+    console.log("routeProps:", routeProps);
+    return <JourneyTrack client_id={routeProps.match.params.client_id} />
   }
 
   render() {
     const { loggedInUser } = this.state;
-    const { renderRegisterUser, renderLoginUser, logOutUser, renderCaseload, renderClient } = this;
+    const {
+      renderRegisterUser,
+      renderLoginUser,
+      logOutUser,
+      renderCaseload,
+      renderClient
+    } = this;
 
     console.log("current logged in user ====> ", loggedInUser);
-  
+
     return (
       <div className="App">
         <Navbar loggedInUser={loggedInUser} logOutUser={logOutUser} />
@@ -76,19 +87,35 @@ class App extends Component {
           />
           <Route
             path="/caseload"
-            render={() => (loggedInUser ? renderCaseload() : <Redirect to="/" />)}
+            render={() =>
+              loggedInUser ? renderCaseload() : <Redirect to="/" />
+            }
+          />
+          <Route
+            path="/client/:client_id/journey-track"
+            render={(routeProps) =>
+              loggedInUser ? renderJourneyTrack(routeProps) : <Redirect to="/" />
+            }
           />
           <Route
             path="/client/:client_id"
-            render={(routeProps) => (loggedInUser ? renderClient(routeProps) : <Redirect to="/" />)}
+            render={routeProps =>
+              loggedInUser ? renderClient(routeProps) : <Redirect to="/" />
+            }
           />
           <Route
             path="/register"
-            render={() => (loggedInUser ? renderCaseload() : renderRegisterUser())}
+            render={() =>
+              loggedInUser ? renderCaseload() : renderRegisterUser()
+            }
           />
           <Route
             path="/login"
-            render={() => (loggedInUser ? (renderCaseload() && <Redirect to="/caseload" /> ): (renderLoginUser()))}
+            render={() =>
+              loggedInUser
+                ? renderCaseload() && <Redirect to="/caseload" />
+                : renderLoginUser()
+            }
           />
         </Switch>
       </div>
