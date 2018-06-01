@@ -51,9 +51,9 @@ class App extends Component {
     return <Caseload loggedInUser={loggedInUser} />
   }
 
-  renderClient = () => {
-    const {loggedInUser} = this.state;
-    return <Client loggedInUser={loggedInUser}/>
+  renderClient = (routeProps) => {
+    console.log("routeProps:", routeProps)
+    return <Client client_id={routeProps.match.params.client_id} />
   }
 
   render() {
@@ -80,7 +80,7 @@ class App extends Component {
           />
           <Route
             path="/client/:client_id"
-            render={() => (loggedInUser ? renderClient() : <Redirect to="/" />)}
+            render={(routeProps) => (loggedInUser ? renderClient(routeProps) : <Redirect to="/" />)}
           />
           <Route
             path="/register"

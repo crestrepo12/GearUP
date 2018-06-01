@@ -37,7 +37,7 @@ router.get('/', (req, res, next) => res.status(200)
 router.get('/logout', loginRequired, db.logoutUser);
 router.get('/all_providers', passport.authenticate('local'), db.getAllProviders);
 router.get('/clients/:provider_id', db.getAllClientsByProviderId);
-router.get('/client/:id', db.getClientById);
+router.get('/client/:client_id', db.getClientById);
 
 // Patch Methods 
 

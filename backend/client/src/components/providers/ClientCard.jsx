@@ -1,14 +1,12 @@
 import react from 'react';
 import React, { Component} from "react";
-import { Link, Route, Switch } from "react-router-dom";
-import axios from "axios";
-import Client from "./Client";
+import { Link } from "react-router-dom";
 
 class ClientCard extends Component {
     constructor() {
         super();
     }
-    
+
     render() {
         const {clients} = this.props;
         console.log("client card: ++ ", clients)
@@ -17,15 +15,15 @@ class ClientCard extends Component {
 
           {clients.map(client => {
             return (
-              <Link to={`/client/${client.id}`} key={client.id}> 
+              <Link to={`/client/${client.id}`} key={client.id} replace > 
 
               <img src={client.imgurl} alt={client.firstname} /> 
               <h3>{`${client.firstname} ${client.lastname}`}</h3>
-              
+
               </Link>
             );
           })}
-          
+
         </div>
         )
     }

@@ -13,7 +13,7 @@ class Caseload extends Component {
   }
 
   componentDidMount() {
-    
+    //whoever is logged in fetches their list of clients
     const user = this.props.loggedInUser;
     const provider_id = this.props.loggedInUser.id;
     axios
