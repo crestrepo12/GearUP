@@ -58,7 +58,7 @@ class Client extends Component {
         */
 
     return (
-      <div id="client">
+      <div id="client" className="center">
         <h1>Client</h1>
 
         <div key={client.id}>

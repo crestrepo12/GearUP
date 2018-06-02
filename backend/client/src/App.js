@@ -3,7 +3,6 @@ import { Route, Link, Switch, Redirect } from "react-router-dom";
 import axios from "axios";
 import logo from "./logo.svg";
 import "./App.css";
-import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import Caseload from "./components/providers/Caseload";
 import Client from "./components/providers/Client";
@@ -68,7 +67,8 @@ class App extends Component {
       renderLoginUser,
       logOutUser,
       renderCaseload,
-      renderClient
+      renderClient,
+      renderJourneyTrack
     } = this;
 
     console.log("current logged in user ====> ", loggedInUser);
@@ -82,7 +82,7 @@ class App extends Component {
             exact
             path="/"
             render={() =>
-              loggedInUser ? <Redirect to="/caseload" /> : <Home />
+              loggedInUser ? <Redirect to="/caseload" /> : renderRegisterUser()
             }
           />
           <Route

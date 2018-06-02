@@ -1,3 +1,43 @@
+/* --- Overall styling --- */
+.center {
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+.green {
+  background-color: green;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.orange {
+  background-color: orangered;
+}
+
+.full-height {
+  height: 100vh;
+}
+
+.full-width {
+  width: 100vw;
+}
+
+.fifty-width {
+  width: 50vw;
+}
+
+
+/* --- Navigation Bar --- */
 #navigation-bar {
   width: 100vw;
   height: 30px;
@@ -17,3 +57,7 @@
 #navigation-bar > a > h2 {
   margin: 0;
 }
+
+
+/* --- Home/Register Page --- */
+

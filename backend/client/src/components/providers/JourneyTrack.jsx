@@ -15,3 +15,5 @@ class JourneyTrack extends Component {
         );
     }
 }
+
+export default JourneyTrack;

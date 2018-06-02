@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import Home from "../Home";
 
 class RegisterUser extends Component {
@@ -76,9 +76,11 @@ class RegisterUser extends Component {
     const { inputOnChange, submitRegisterForm } = this;
 
     return (
-      <div className="register-page">
-        <h1> Register Here </h1>
-        <form onSubmit={submitRegisterForm}>
+      <div id="register-home-page" className="row full-width">
+        <Home />
+        <div id="register-container" className="full-height fifty-width orange">
+        <form onSubmit={submitRegisterForm} className="column green">
+          <h1> Register Here </h1>
           <input
             type="text"
             name="firstname"
@@ -111,6 +113,10 @@ class RegisterUser extends Component {
           />
           <input type="submit" value="Submit" />
         </form>
+        <div> 
+          <p>Already have an account? <Link to="/login">Log in here.</Link></p>
+        </div>
+        </div>
       </div>
     );
   }

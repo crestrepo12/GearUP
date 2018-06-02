@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Route, Link, Switch, Redirect } from "react-router-dom";
-import Home from "../Home";
 
 class LoginUser extends Component {
   constructor() {
@@ -89,7 +88,7 @@ class LoginUser extends Component {
     const { inputOnChange, submitLoginForm, handleGuestLogin } = this;
 
     return (
-      <div className="login-page">
+      <div id="login-page" className="yellow full-width full-height">
         <h1> Login Here </h1>
         <form onSubmit={submitLoginForm}>
           <input
@@ -110,6 +109,9 @@ class LoginUser extends Component {
         </form>
           <input type="button" value="Guest Login" onClick={handleGuestLogin}/>
         <p> {message} </p>
+        <div> 
+          <p>Don't have the tools to GearUp? <Link to="/register">Register here.</Link></p>
+        </div>
       </div>
     );
   }

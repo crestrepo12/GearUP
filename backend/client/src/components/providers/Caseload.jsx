@@ -36,7 +36,7 @@ class Caseload extends Component {
     const { loggedInUser } = this.props;
     const { clients } = this.state;
     return (
-      <div id="caseload">
+      <div id="caseload" className="center">
         <h1>Caseload</h1>
 
         <ClientCard loggedInUser={loggedInUser} clients={clients} />
