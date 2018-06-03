@@ -178,6 +178,27 @@ INSERT INTO client_objectives (client_id, objective, accomplished)
 
 INSERT INTO age_group (age_group_range)
   VALUES
-  ("12 - 16"),
-  ("17 - 22"),
-  ("23+");
+  ('12 - 16'), 
+  ('17 - 22'), 
+  ('23+'); 
+
+INSERT INTO general_objectives (age_group_id, objective, accomplished) 
+  VALUES
+  (1, 'Explore vocational interests and abilites for potential career path', false),
+  (1, 'Explore careers options', false),
+  (1, 'Join community services', false),
+  (1, 'Look into volunteer experiences', false),
+  (1, 'Review self advocacy', false),
+  (1, 'Review health and safety skills', false),
+  (2, 'Have a dicussion about colleges, vocational, or technical schools', false),
+  (2, 'Be informed about Social Security Benefits', false),
+  (2, 'Discuss about living arrangements (residential or independent living)', false),
+  (2, 'Look into employment programs', false),
+  (2, 'Look into transporation services (public, ride sharing services, etc.)', false),
+  (2, 'Register to vote', false),
+  (3, 'Review health insurance option', false),
+  (3, 'Look into case managment services', false),
+  (3, 'Review guardianship documentation', false),
+  (3, 'Are you involved in recreation or leisure activities', false),
+  (3, 'Attend self-advocacy groups to be aware of laws that protect you', false),
+  (3, 'Review personal financial budget', false);
