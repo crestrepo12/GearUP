@@ -1,0 +1,30 @@
+/* Login page */
+
+#login-page,
+#register-home-page {
+    width: 100vw;
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+}
+
+#register-home-page {
+    margin-top: 5%;
+}
+
+.login-container {
+    width: 500px;
+}
+
+/* register/home page */
+
+.home-page {
+    display: flex;
+    justify-content: center;
+    padding: 0 30px;
+}
+
+.register-container {
+    padding: 0 30px;
+}
+

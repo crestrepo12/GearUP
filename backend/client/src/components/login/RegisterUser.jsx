@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Redirect, Link } from "react-router-dom";
 import Home from "../Home";
+import { Button, Form, Header, Message } from "semantic-ui-react";
 
 class RegisterUser extends Component {
   constructor(props) {
@@ -78,44 +79,68 @@ class RegisterUser extends Component {
     return (
       <div id="register-home-page" className="row full-width">
         <Home />
-        <div id="register-container" className="full-height fifty-width orange">
-        <form onSubmit={submitRegisterForm} className="column green">
-          <h1> Register Here </h1>
-          <input
-            type="text"
-            name="firstname"
-            placeholder="First name"
-            onChange={inputOnChange}
-          />
-          <input
-            type="text"
-            name="lastname"
-            placeholder="Last name"
-            onChange={inputOnChange}
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            onChange={inputOnChange}
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            onChange={inputOnChange}
-          />
-          <input
-            type="password"
-            name="confirm_password"
-            placeholder="Confirm Password"
-            onChange={inputOnChange}
-          />
-          <input type="submit" value="Submit" />
-        </form>
-        <div> 
-          <p>Already have an account? <Link to="/login">Log in here.</Link></p>
-        </div>
+        <div className="register-container full-height fifty-width orange">
+          <Form onSubmit={submitRegisterForm} className="column green">
+            <Header as="h2" className="center">
+              {" "}
+              Register Here{" "}
+            </Header>
+            <Form.Input
+              type="text"
+              name="firstname"
+              placeholder="First name"
+              onChange={inputOnChange}
+              fluid
+              icon="user"
+              iconPosition="left"
+            />
+            <Form.Input
+              type="text"
+              name="lastname"
+              placeholder="Last name"
+              onChange={inputOnChange}
+              fluid
+              icon="user"
+              iconPosition="left"
+            />
+            <Form.Input
+              type="email"
+              name="email"
+              placeholder="Email address"
+              onChange={inputOnChange}
+              fluid
+              icon="at"
+              iconPosition="left"
+            />
+            <Form.Input
+              type="password"
+              name="password"
+              placeholder="Password"
+              onChange={inputOnChange}
+              fluid
+              icon="lock"
+              iconPosition="left"
+            />
+            <Form.Input
+              type="password"
+              name="confirm_password"
+              placeholder="Confirm Password"
+              onChange={inputOnChange}
+              fluid
+              icon="lock"
+              iconPosition="left"
+            />
+            <Button type="submit" value="Submit">
+              {" "}
+              Create Account{" "}
+            </Button>
+          </Form>
+          <br />
+          <div>
+            <Message className="center">
+              Already have an account? <Link to="/login">Log in here.</Link>
+            </Message>
+          </div>
         </div>
       </div>
     );

@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Route, Link, Switch, Redirect } from "react-router-dom";
+import {
+  Button,
+  Form,
+  Header,
+  Message
+} from "semantic-ui-react";
 
 class LoginUser extends Component {
   constructor() {
@@ -79,36 +85,57 @@ class LoginUser extends Component {
           });
         }
       });
-  }
+  };
 
   render() {
     const { email, password, message } = this.state;
     const { inputOnChange, submitLoginForm, handleGuestLogin } = this;
 
     return (
-      <div id="login-page" className="yellow full-width full-height">
-        <h1> Login Here </h1>
-        <form onSubmit={submitLoginForm} className="column">
-          <input
-            type="email"
-            name="email"
-            value={email}
-            placeholder="Email"
-            onChange={inputOnChange}
-          />
-          <input
-            type="password"
-            name="password"
-            value={password}
-            placeholder="Password"
-            onChange={inputOnChange}
-          />
-          <input type="submit" value="Submit" />
-        </form>
-          <input type="button" value="Guest Login" onClick={handleGuestLogin}/>
-        <p> {message} </p>
-        <div> 
-          <p>Don't have the tools to GearUp? <Link to="/register">Register here.</Link></p>
+      <div id="login-page" className="full-width full-height margin-top">
+        <div className="login-container">
+          <Header as="h1" color="blue" className="center">
+            {" "}
+            Log in to your account{" "}
+          </Header>
+          <Form size="large" onSubmit={submitLoginForm} className="column form">
+            <Form.Input
+              type="email"
+              name="email"
+              value={email}
+              placeholder="Email address"
+              onChange={inputOnChange}
+              fluid
+              icon="at"
+              iconPosition="left"
+            />
+            <Form.Input
+              type="password"
+              name="password"
+              value={password}
+              placeholder="Password"
+              onChange={inputOnChange}
+              fluid
+              icon="lock"
+              iconPosition="left"
+            />
+            <Button type="submit"> Login </Button>
+            <br />
+            <Button
+              type="button"
+              value="Guest Login"
+              onClick={handleGuestLogin}
+            >
+              Demo Login
+            </Button>
+          </Form>
+          <p> {message} </p>
+          <div>
+            <Message className="center">
+              New to GearUp? {" "}
+              <Link to="/register">Register here.</Link>
+            </Message>
+          </div>
         </div>
       </div>
     );

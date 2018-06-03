@@ -3,6 +3,7 @@ import { Route, Link, Switch, Redirect } from "react-router-dom";
 import axios from "axios";
 import logo from "./logo.svg";
 import "./App.css";
+import "./css/Login&Register.css";
 import Navbar from "./components/Navbar";
 import Caseload from "./components/providers/Caseload";
 import Client from "./components/providers/Client";
