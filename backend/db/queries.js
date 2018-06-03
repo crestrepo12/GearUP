@@ -101,12 +101,40 @@ const getClientById = (req, res, next) => {
   })
 }
 
+const getCustomObjectiveListByClient = (req, res, next) => {
+  db
+  .any('SELECT client_objectives.client_id, clients.firstname, clients.lastname, clients.age, client_objectives.objective, client_objectives.accomplished FROM client_objectives JOIN clients ON client_objectives.client_id=clients.id WHERE clients.id=${client_id}', {client_id: req.params.client_id})
+  .then(client => {
+    res.status(200)
+    .json({
+      status: 'success',
+      client_custom_list: client,
+      message: `Retrieved client ${client.length} custom objectives from list`
+    })
+  })
+}
+
+const getGeneralObjectiveList = (req, res, next) => {
+  db
+  .any('SELECT general_objectives.age_group_id, age_group.age_group_range, general_objectives.objective, general_objectives.accomplished FROM general_objectives JOIN age_group ON general_objectives.age_group_id=age_group.id WHERE general_objectives.age_group_id=${age_group_id}', {age_group_id: req.params.age_group_id})
+  .then(client => {
+    res.status(200)
+    .json({
+      status: 'success',
+      client_general_list: client,
+      message: `Retrieved ${client.length} general objectives`
+    })
+  })
+}
+
 module.exports = {
   createAccount,
   getAllProviders,
   logoutUser,
   getAllClientsByProviderId,
   getClientById,
+  getCustomObjectiveListByClient,
+  getGeneralObjectiveList
 };
 
 

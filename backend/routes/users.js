@@ -38,6 +38,8 @@ router.get('/logout', loginRequired, db.logoutUser);
 router.get('/all_providers', passport.authenticate('local'), db.getAllProviders);
 router.get('/client/:client_id', db.getClientById);
 router.get('/clients/:provider_id', db.getAllClientsByProviderId);
+router.get('/client/:client_id/custom_objectives', db.getCustomObjectiveListByClient);
+router.get('/client/:age_group_id/general_objectives', db.getGeneralObjectiveList)
 
 // Patch Methods 
 

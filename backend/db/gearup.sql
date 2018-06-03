@@ -114,7 +114,6 @@ INSERT INTO client_objectives (client_id, objective, accomplished)
   (2, 'Sort clothes by color', true),
   (2, 'Fold clothes', true),
   (2, 'Use the washer', true),
-  (2, 'Money Management', true),
   (3, 'Write Letter', false),
   (3, 'Balance a check', false),
   (3, 'Sort clothes by color', true),
