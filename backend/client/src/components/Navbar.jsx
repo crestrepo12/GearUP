@@ -25,11 +25,15 @@ class Navbar extends Component {
     const { logOutUser } = this.props;
     return (
       <nav id="navigation-bar">
-        <Link to="/">
-          <h2>GearUP</h2>
-        </Link>
-        <Link to="/caseload"> Clients </Link>
-        <input type="button" value="Log Out" onClick={this.signOutUser} />
+        <div id="navbar-left">
+          <Link to="/">
+            <h2>GearUP</h2>
+          </Link>
+        </div>
+        <div id="navbar-right">
+          <Link to="/caseload"> Clients </Link>
+          <input type="button" value="Log Out" onClick={this.signOutUser} />
+        </div>
       </nav>
     );
   };
@@ -37,12 +41,16 @@ class Navbar extends Component {
   navbarUserLoggedOut = () => {
     return (
       <nav id="navigation-bar">
-        <Link to="/">
-          <h2>GearUP</h2>
-        </Link>
-        <Link to="/caseload"> Clients </Link>
-        <Link to="/register"> Register </Link>
-        <Link to="/login"> Log In </Link>
+        <div id="navbar-left">
+          <Link to="/">
+            <h2>GearUP</h2>
+          </Link>
+        </div>
+        <div id="navbar-right">
+          <Link to="/caseload"> Clients </Link>
+          <Link to="/register"> Register </Link>
+          <Link to="/login"> Log In </Link>
+        </div>
       </nav>
     );
   };

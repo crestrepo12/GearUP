@@ -32,9 +32,7 @@ class LoginUser extends Component {
         password: password
       })
       .then(res => {
-        console.log("res loginpage: => ", res)
         var user = res.data.user;
-        console.log("loginpage user:", user)
         this.props.handleLoginChange(user);
       })
       .catch(err => {
@@ -90,7 +88,7 @@ class LoginUser extends Component {
     return (
       <div id="login-page" className="yellow full-width full-height">
         <h1> Login Here </h1>
-        <form onSubmit={submitLoginForm}>
+        <form onSubmit={submitLoginForm} className="column">
           <input
             type="email"
             name="email"

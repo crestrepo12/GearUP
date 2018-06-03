@@ -46,18 +46,31 @@
   -webkit-box-shadow:  0 0 10px rgb(200, 200, 200);
   box-shadow:          0 0 10px rgb(200, 200, 200);
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   text-decoration: none;
 }
 
-#navigation-bar > a {
+#navigation-bar > #navbar-left > a,
+#navigation-bar > #navbar-right > a {
   text-decoration: none;
 }
 
-#navigation-bar > a > h2 {
+#navigation-bar > #navbar-left > a > h2 {
   margin: 0;
 }
 
+#navbar-left {
+  width: 50vw;
+  display: flex;
+  justify-content: flex-start;
+}
+
+#navbar-right {
+  width: 50vw;
+  display: flex;
+  justify-content: flex-end;
+  justify-content: space-evenly;
+}
 
 /* --- Home/Register Page --- */
 

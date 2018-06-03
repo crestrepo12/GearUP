@@ -108,3 +108,10 @@ module.exports = {
   getAllClientsByProviderId,
   getClientById,
 };
+
+
+// future queries
+/*
+// a list of tasks each individual needs to completed
+SELECT client_objectives.client_id, clients.firstname, clients.lastname, clients.age, client_objectives.objective, client_objectives.accomplished FROM client_objectives JOIN clients ON client_objectives.client_id=clients.id;
+*/

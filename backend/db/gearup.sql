@@ -18,8 +18,20 @@ CREATE TABLE providers (
   company_name VARCHAR
 );
 
+CREATE TABLE age_group (
+  ID SERIAL PRIMARY KEY UNIQUE,
+  age_group_range VARCHAR
+);
+
+CREATE TABLE general_objectives (
+  ID SERIAL PRIMARY KEY UNIQUE,
+  age_group_id INTEGER REFERENCES age_group(ID) ON UPDATE CASCADE,
+  objective VARCHAR,
+  accomplished boolean
+);
+
 CREATE TABLE clients (
-  ID SERIAL PRIMARY KEY,
+  ID SERIAL PRIMARY KEY UNIQUE,
   firstname VARCHAR NOT NULL,
   lastname VARCHAR NOT NULL,
   email VARCHAR UNIQUE NOT NULL,
@@ -38,30 +50,18 @@ CREATE TABLE clients (
   -- program_history VARCHAR,
   -- behaviors VARCHAR,
   -- behavior_strategy VARCHAR,
-  provider_id INTEGER REFERENCES providers(id) ON UPDATE CASCADE
+  provider_id INTEGER REFERENCES providers(ID) ON UPDATE CASCADE,
+  general_objectives_id INTEGER REFERENCES general_objectives(ID) ON UPDATE CASCADE
 );
 
--- CREATE TABLE age_groups (
---   ID SERIAL PRIMARY KEY,
---   age_range VARCHAR
--- );
+CREATE TABLE client_objectives (
+  ID SERIAL PRIMARY KEY UNIQUE,
+  client_id INTEGER NOT NULL REFERENCES clients(ID) ON UPDATE CASCADE,
+  objective VARCHAR,
+  accomplished boolean 
+);
 
--- client_age INTEGER NOT NULL REFERENCES clients(age) ON UPDATE CASCADE
 
--- CREATE TABLE objectives (
---   ID SERIAL PRIMARY KEY,
---   age_group_id INTEGER REFERENCES age_groups(id) ON UPDATE CASCADE,
---   activity VARCHAR (50)
--- );
-
--- CREATE TABLE client_objective (
---   ID SERIAL PRIMARY KEY,
---   objectives_id INTEGER REFERENCES objectives(id) ON UPDATE CASCADE,
---   client_id INTEGER REFERENCES clients(id) ON UPDATE CASCADE,
---   completed boolean,
---   -- rating numeric(1),
---   notes VARCHAR 
--- );
 
 -- CREATE TABLE medical_history (
 --   ID SERIAL PRIMARY KEY,
@@ -100,15 +100,84 @@ INSERT INTO clients (firstname, lastname, email, age, occupation, gender, reside
   ('Bale', 'Pinnocke', 'bpinnockea@amazon.co.uk', 23, 'Automation Specialist I', 'Male', '2622 Lunder Trail, NYC, NY', '10019', '240-858-0789', DEFAULT, 'Hello my name is _______, I come from _________. When I grow up, I would like to be a ________________.', 'autism spectrum', false, 1),
   ('Jinny', 'Zupa', 'jzupab@dagondesign.com', 15, 'Paralegal', 'Female', '98 Roxbury Court, NYC, NY', '10019', '140-219-9592', DEFAULT, 'Hello my name is _______, I come from _________. When I grow up, I would like to be a ________________.', 'autism spectrum', true, 2);
 
-  -- 
 
--- INSERT INTO age_groups ( id, age_range ) 
---   VALUES (1, '12 - 15' );
--- INSERT INTO age_groups ( id, age_range ) 
---   VALUES (2, '16 - 19');
--- INSERT INTO age_groups ( id, age_range ) 
---   VALUES (3, '20 - 23');
--- INSERT INTO age_groups ( id, age_range ) 
---   VALUES (4, '24 - 27');
--- INSERT INTO age_groups ( id, age_range ) 
---   VALUES (5, '28 - 31');
+INSERT INTO client_objectives (client_id, objective, accomplished)
+  VALUES
+  (1, 'Write Letter', false),
+  (1, 'Balance a check', false),
+  (1, 'Sort clothes by color', true),
+  (1, 'Fold clothes', true),
+  (1, 'Use the washer', true),
+  (2, 'Money Management', true),
+  (2, 'Write Letter', false),
+  (2, 'Balance a check', false),
+  (2, 'Sort clothes by color', true),
+  (2, 'Fold clothes', true),
+  (2, 'Use the washer', true),
+  (2, 'Money Management', true),
+  (3, 'Write Letter', false),
+  (3, 'Balance a check', false),
+  (3, 'Sort clothes by color', true),
+  (3, 'Fold clothes', true),
+  (3, 'Use the washer', true),
+  (3, 'Money Management', true),
+  (4, 'Write Letter', false),
+  (4, 'Balance a check', false),
+  (4, 'Sort clothes by color', true),
+  (4, 'Fold clothes', true),
+  (4, 'Use the washer', true),
+  (4, 'Money Management', true),
+  (5, 'Write Letter', false),
+  (5, 'Balance a check', false),
+  (5, 'Sort clothes by color', true),
+  (5, 'Fold clothes', true),
+  (5, 'Use the washer', true),
+  (5, 'Money Management', true),
+  (6, 'Write Letter', false),
+  (6, 'Balance a check', false),
+  (6, 'Sort clothes by color', true),
+  (6, 'Fold clothes', true),
+  (6, 'Use the washer', true),
+  (6, 'Money Management', true),
+  (7, 'Write Letter', false),
+  (7, 'Balance a check', false),
+  (7, 'Sort clothes by color', true),
+  (7, 'Fold clothes', true),
+  (7, 'Use the washer', true),
+  (7, 'Money Management', true),
+  (8, 'Write Letter', false),
+  (8, 'Balance a check', false),
+  (8, 'Sort clothes by color', true),
+  (8, 'Fold clothes', true),
+  (8, 'Use the washer', true),
+  (8, 'Money Management', true),
+  (9, 'Write Letter', false),
+  (9, 'Balance a check', false),
+  (9, 'Sort clothes by color', true),
+  (9, 'Fold clothes', true),
+  (9, 'Use the washer', true),
+  (9, 'Money Management', true),
+  (10, 'Write Letter', false),
+  (10, 'Balance a check', false),
+  (10, 'Sort clothes by color', true),
+  (10, 'Fold clothes', true),
+  (10, 'Use the washer', true),
+  (10, 'Money Management', true),
+  (11, 'Write Letter', false),
+  (11, 'Balance a check', false),
+  (11, 'Sort clothes by color', true),
+  (11, 'Fold clothes', true),
+  (11, 'Use the washer', true),
+  (11, 'Money Management', true),
+  (12, 'Write Letter', false),
+  (12, 'Balance a check', false),
+  (12, 'Sort clothes by color', true),
+  (12, 'Fold clothes', true),
+  (12, 'Use the washer', true),
+  (12, 'Money Management', true);
+
+INSERT INTO age_group (age_group_range)
+  VALUES
+  ("12 - 16"),
+  ("17 - 22"),
+  ("23+");
