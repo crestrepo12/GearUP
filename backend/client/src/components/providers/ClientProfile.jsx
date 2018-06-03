@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Link, Route, Switch } from "react-router-dom";
 import axios from "axios";
+import { Header, Icon, Image } from 'semantic-ui-react'
 
-class Client extends Component {
+class ClientProfile extends Component {
   constructor() {
     super();
 
@@ -58,8 +59,7 @@ class Client extends Component {
         */
 
     return (
-      <div id="client" className="center">
-        <h1>Client</h1>
+      <div id="client-profile" className="margin-top">
 
         <div key={client.id}>
           <div id="profile-header">
@@ -68,7 +68,7 @@ class Client extends Component {
               alt={`${client.firstname} ${client.lastname}`}
             />
 
-            <h2>{`${client.firstname} ${client.lastname}`}</h2>
+            <Header as="h1">{`${client.firstname} ${client.lastname}`}</Header>
             <p>{client.age}</p>
             <p>{client.gender}</p>
             <p>{client.occupation}</p>
@@ -98,4 +98,4 @@ class Client extends Component {
   }
 }
 
-export default Client;
+export default ClientProfile;

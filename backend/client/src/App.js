@@ -4,9 +4,10 @@ import axios from "axios";
 import logo from "./logo.svg";
 import "./App.css";
 import "./css/Login&Register.css";
+import "./css/Profile.css";
 import Navbar from "./components/Navbar";
 import Caseload from "./components/providers/Caseload";
-import Client from "./components/providers/Client";
+import ClientProfile from "./components/providers/ClientProfile";
 import LoginUser from "./components/login/LoginUser";
 import RegisterUser from "./components/login/RegisterUser";
 import JourneyTrack from "./components/providers/JourneyTrack"
@@ -52,8 +53,8 @@ class App extends Component {
     return <Caseload loggedInUser={loggedInUser} />;
   };
 
-  renderClient = routeProps => {
-    return <Client client_id={routeProps.match.params.client_id} />;
+  renderClientProfile = routeProps => {
+    return <ClientProfile client_id={routeProps.match.params.client_id} />;
   };
 
   renderJourneyTrack = routeProps => {
@@ -68,7 +69,7 @@ class App extends Component {
       renderLoginUser,
       logOutUser,
       renderCaseload,
-      renderClient,
+      renderClientProfile,
       renderJourneyTrack
     } = this;
 
@@ -101,7 +102,7 @@ class App extends Component {
           <Route
             path="/client/:client_id"
             render={routeProps =>
-              loggedInUser ? renderClient(routeProps) : <Redirect to="/" />
+              loggedInUser ? renderClientProfile(routeProps) : <Redirect to="/" />
             }
           />
           <Route

@@ -19,8 +19,7 @@
 /* register/home page */
 
 .home-page {
-    display: flex;
-    justify-content: center;
+    
     padding: 0 30px;
 }
 

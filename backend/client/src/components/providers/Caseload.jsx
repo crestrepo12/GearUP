@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { Link, Route, Switch } from "react-router-dom";
 import axios from "axios";
 import ClientCard from "./ClientCard";
-// import Client from "./Client";
+import { Header, Grid } from 'semantic-ui-react'
 
 class Caseload extends Component {
   constructor() {
@@ -36,10 +36,13 @@ class Caseload extends Component {
     const { loggedInUser } = this.props;
     const { clients } = this.state;
     return (
-      <div id="caseload" className="center">
-        <h1>Caseload</h1>
+      <div id="caseload" className="center margin-top">
+        <Header as="h1">Caseload</Header>
 
-        <ClientCard loggedInUser={loggedInUser} clients={clients} />
+        <ClientCard 
+        loggedInUser={loggedInUser} 
+        clients={clients}
+        />
       </div>
     );
   }
