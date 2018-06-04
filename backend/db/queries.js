@@ -127,6 +127,16 @@ const getGeneralObjectiveList = (req, res, next) => {
   })
 }
 
+
+
+/**
+ * queries left to do:
+ * add client
+ * 
+ */
+
+
+
 module.exports = {
   createAccount,
   getAllProviders,

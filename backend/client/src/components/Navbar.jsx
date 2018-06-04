@@ -32,7 +32,6 @@ class Navbar extends Component {
           </Link>
         </div>
         <div id="navbar-right">
-          <Link to="/caseload"> Clients </Link>
           <Button content="Log Out" onClick={this.signOutUser} color="orange"/>
         </div>
       </nav>
@@ -48,7 +47,6 @@ class Navbar extends Component {
           </Link>
         </div>
         <div id="navbar-right">
-          <Link to="/caseload"> Clients </Link>
           <Link to="/register"> Register </Link>
           <Link to="/login"> Log In </Link>
         </div>

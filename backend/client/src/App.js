@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Route, Link, Switch, Redirect } from "react-router-dom";
 import axios from "axios";
-import logo from "./logo.svg";
 import "./App.css";
 import "./css/Login&Register.css";
 import "./css/Profile.css";
@@ -94,14 +93,14 @@ class App extends Component {
             }
           />
           <Route
-            path="/client/:client_id/journey-track"
+            path="/client/:client_id/journey"
             render={(routeProps) =>
               loggedInUser ? renderJourneyTrack(routeProps) : <Redirect to="/" />
             }
           />
           <Route
             path="/client/:client_id"
-            render={routeProps =>
+            render={(routeProps) =>
               loggedInUser ? renderClientProfile(routeProps) : <Redirect to="/" />
             }
           />

@@ -70,6 +70,7 @@ button.ui.button {
 #navbar-left {
   width: 50%;
   margin: auto;
+  margin-left: 3%;
   display: flex;
   justify-content: flex-start;
 }

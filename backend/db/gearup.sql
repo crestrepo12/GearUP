@@ -18,18 +18,6 @@ CREATE TABLE providers (
   company_name VARCHAR
 );
 
-CREATE TABLE age_group (
-  ID SERIAL PRIMARY KEY UNIQUE,
-  age_group_range VARCHAR
-);
-
-CREATE TABLE general_objectives (
-  ID SERIAL PRIMARY KEY UNIQUE,
-  age_group_id INTEGER REFERENCES age_group(ID) ON UPDATE CASCADE,
-  objective VARCHAR,
-  accomplished boolean
-);
-
 CREATE TABLE clients (
   ID SERIAL PRIMARY KEY UNIQUE,
   firstname VARCHAR NOT NULL,
@@ -50,18 +38,26 @@ CREATE TABLE clients (
   -- program_history VARCHAR,
   -- behaviors VARCHAR,
   -- behavior_strategy VARCHAR,
-  provider_id INTEGER REFERENCES providers(ID) ON UPDATE CASCADE,
-  general_objectives_id INTEGER REFERENCES general_objectives(ID) ON UPDATE CASCADE
+  provider_id INTEGER REFERENCES providers(ID) ON UPDATE CASCADE
+);
+
+CREATE TABLE life_skills (
+  ID SERIAL PRIMARY KEY UNIQUE,
+  categories VARCHAR
+);
+
+CREATE TABLE objectives (
+  ID SERIAL PRIMARY KEY UNIQUE,
+  life_skills_id INTEGER REFERENCES life_skills(ID) ON UPDATE CASCADE,
+  objective VARCHAR
 );
 
 CREATE TABLE client_objectives (
   ID SERIAL PRIMARY KEY UNIQUE,
-  client_id INTEGER NOT NULL REFERENCES clients(ID) ON UPDATE CASCADE,
-  objective VARCHAR,
-  accomplished boolean 
+  client_id INTEGER REFERENCES clients(ID) ON UPDATE CASCADE,
+  objective_id INTEGER REFERENCES objectives(ID) ON UPDATE CASCADE,
+  objective_accomplished boolean
 );
-
-
 
 -- CREATE TABLE medical_history (
 --   ID SERIAL PRIMARY KEY,
@@ -75,8 +71,6 @@ CREATE TABLE client_objectives (
 -- Values
 -- * note only use single quotes
 -- 
-
-
 
 INSERT INTO providers (firstname, lastname, email, password_digest, occupation, gender, bio, zipcode, phone_number, imgurl)
   VALUES
@@ -100,104 +94,133 @@ INSERT INTO clients (firstname, lastname, email, age, occupation, gender, reside
   ('Bale', 'Pinnocke', 'bpinnockea@amazon.co.uk', 23, 'Automation Specialist', 'Male', '2622 Lunder Trail, NYC, NY', '10019', '240-858-0789', 'https://cdn.pixabay.com/photo/2018/02/16/14/38/portrait-3157821_1280.jpg', 'Hello my name is _______, I come from _________. When I grow up, I would like to be a ________________.', 'autism spectrum', false, 1),
   ('Jinny', 'Zupa', 'jzupab@dagondesign.com', 15, 'Student', 'Female', '98 Roxbury Court, NYC, NY', '10019', '140-219-9592', DEFAULT, 'Hello my name is _______, I come from _________. When I grow up, I would like to be a ________________.', 'autism spectrum', true, 2);
 
+--
 
-INSERT INTO client_objectives (client_id, objective, accomplished)
+INSERT INTO life_skills (categories)
   VALUES
-  (1, 'Write Letter', false),
-  (1, 'Balance a check', false),
-  (1, 'Sort clothes by color', true),
-  (1, 'Fold clothes', true),
-  (1, 'Use the washer', true),
-  (2, 'Money Management', true),
-  (2, 'Write Letter', false),
-  (2, 'Balance a check', false),
-  (2, 'Sort clothes by color', true),
-  (2, 'Fold clothes', true),
-  (2, 'Use the washer', true),
-  (3, 'Write Letter', false),
-  (3, 'Balance a check', false),
-  (3, 'Sort clothes by color', true),
-  (3, 'Fold clothes', true),
-  (3, 'Use the washer', true),
-  (3, 'Money Management', true),
-  (4, 'Write Letter', false),
-  (4, 'Balance a check', false),
-  (4, 'Sort clothes by color', true),
-  (4, 'Fold clothes', true),
-  (4, 'Use the washer', true),
-  (4, 'Money Management', true),
-  (5, 'Write Letter', false),
-  (5, 'Balance a check', false),
-  (5, 'Sort clothes by color', true),
-  (5, 'Fold clothes', true),
-  (5, 'Use the washer', true),
-  (5, 'Money Management', true),
-  (6, 'Write Letter', false),
-  (6, 'Balance a check', false),
-  (6, 'Sort clothes by color', true),
-  (6, 'Fold clothes', true),
-  (6, 'Use the washer', true),
-  (6, 'Money Management', true),
-  (7, 'Write Letter', false),
-  (7, 'Balance a check', false),
-  (7, 'Sort clothes by color', true),
-  (7, 'Fold clothes', true),
-  (7, 'Use the washer', true),
-  (7, 'Money Management', true),
-  (8, 'Write Letter', false),
-  (8, 'Balance a check', false),
-  (8, 'Sort clothes by color', true),
-  (8, 'Fold clothes', true),
-  (8, 'Use the washer', true),
-  (8, 'Money Management', true),
-  (9, 'Write Letter', false),
-  (9, 'Balance a check', false),
-  (9, 'Sort clothes by color', true),
-  (9, 'Fold clothes', true),
-  (9, 'Use the washer', true),
-  (9, 'Money Management', true),
-  (10, 'Write Letter', false),
-  (10, 'Balance a check', false),
-  (10, 'Sort clothes by color', true),
-  (10, 'Fold clothes', true),
-  (10, 'Use the washer', true),
-  (10, 'Money Management', true),
-  (11, 'Write Letter', false),
-  (11, 'Balance a check', false),
-  (11, 'Sort clothes by color', true),
-  (11, 'Fold clothes', true),
-  (11, 'Use the washer', true),
-  (11, 'Money Management', true),
-  (12, 'Write Letter', false),
-  (12, 'Balance a check', false),
-  (12, 'Sort clothes by color', true),
-  (12, 'Fold clothes', true),
-  (12, 'Use the washer', true),
-  (12, 'Money Management', true);
+  ('Career Path and Employment'),
+  ('Self Advocacy'),
+  ('Health and Safety'),
+  ('Socialization'),
+  ('Community Participation and Personal Finances'),
+  ('Transportation'),
+  ('Recreation/Leisure'), 
+  ('Home Living Skills');
 
-INSERT INTO age_group (age_group_range)
-  VALUES
-  ('12 - 16'), 
-  ('17 - 22'), 
-  ('23+'); 
+--
 
-INSERT INTO general_objectives (age_group_id, objective, accomplished) 
+INSERT INTO objectives (life_skills_id, objective)
   VALUES
-  (1, 'Explore vocational interests and abilites for potential career path', false),
-  (1, 'Explore careers options', false),
-  (1, 'Join community services', false),
-  (1, 'Look into volunteer experiences', false),
-  (1, 'Review self advocacy', false),
-  (1, 'Review health and safety skills', false),
-  (2, 'Have a dicussion about colleges, vocational, or technical schools', false),
-  (2, 'Be informed about Social Security Benefits', false),
-  (2, 'Discuss about living arrangements (residential or independent living)', false),
-  (2, 'Look into employment programs', false),
-  (2, 'Look into transporation services (public, ride sharing services, etc.)', false),
-  (2, 'Register to vote', false),
-  (3, 'Review health insurance option', false),
-  (3, 'Look into case managment services', false),
-  (3, 'Review guardianship documentation', false),
-  (3, 'Are you involved in recreation or leisure activities', false),
-  (3, 'Attend self-advocacy groups to be aware of laws that protect you', false),
-  (3, 'Review personal financial budget', false);
+  (1, 'Explore vocational interests and abilites for potential career path'),
+  (1, 'Explore careers options'),
+  (1, 'Join community services'),
+  (1, 'Look into volunteer experiences'),
+  (1, 'Have a dicussion about colleges, vocational, or technical schools'),
+  (1, 'Look into employment programs'),
+  (2, 'Review self advocacy'),
+  (2, 'Attend self-advocacy groups to be aware of laws that protect you'),
+  (2, 'Be informed about Social Security Benefits'),
+  (2, 'Discuss about living arrangements (residential or independent living)'),
+  (2, 'Review guardianship documentation'),
+  (2, 'Register to vote'),
+  (3, 'Review health and safety skills'),
+  (3, 'Review health insurance option'),
+  (4, 'Interacting over social media by not giving away personal information online'),
+  (4, 'Do not not give your social security information to anybody'),
+  (4, 'Make should you greet people with a hello and handshakes are optional'),
+  (5, 'Review personal financial budget'),
+  (5, 'Balance a check'),
+  (6, 'Look into transporation services (public, ride sharing services, etc.)'),
+  (7, 'Look into case managment services'),
+  (7, 'Are you involved in recreation or leisure activities'),
+  (8, 'Sort clothes by color'),
+  (8, 'Fold clothes'),
+  (8, 'Use the washer');
+
+--
+
+INSERT INTO client_objectives (client_id, objective_id, objective_accomplished)
+  VALUES
+  (1, 1, false), --12, student
+  (1, 7, false),
+  (1, 13, false),
+  (1, 15, false),
+  (1, 17, true),
+  (1, 22, true),
+  (1, 23, true),
+  (1, 24, true),
+  (1, 25, true),
+  (2, 7, false), --27, graphic designer
+  (2, 8, false),
+  (2, 9, false),
+  (2, 10, false),
+  (2, 12, true),
+  (2, 22, true),
+  (2, 23, true),
+  (2, 24, true),
+  (2, 25, false),
+  (3, 4, false), --27, college student
+  (3, 6, true),
+  (3, 8, false),
+  (3, 9, false),
+  (3, 18, false),
+  (3, 23, false),
+  (3, 24, false),
+  (3, 25, false),
+  (4, 17, false), --15, student
+  (4, 22, false),
+  (4, 23, true),
+  (4, 24, true),
+  (5, 7,  false), --13, student
+  (5, 13, true),
+  (5, 15, false),
+  (5, 17, false),
+  (5, 22, true),
+  (5, 23, false),
+  (6, 13, false), --19, student
+  (6, 15, false),
+  (6, 17, false),
+  (6, 22, false),
+  (6, 23, false),
+  (7, 13, false), --21, vocational student
+  (7, 15, false),
+  (7, 17, true),
+  (7, 22, false),
+  (7, 23, true),
+  (7, 24, false),
+  (7, 25, false),
+  (8, 7, false), --20, day care program aide
+  (8, 8, false),
+  (8, 9, false),
+  (8, 10, true),
+  (8, 11, false),
+  (8, 12, false),
+  (9, 7, false),--30, registered nurse
+  (9, 8, false),
+  (9, 9, false),
+  (9, 18, false),
+  (9, 23, true),
+  (9, 24, true),
+  (9, 25, true), 
+  (10, 8, false), --25, software engineer
+  (10, 9, false),
+  (10, 18, false),
+  (10, 19, false),
+  (10, 23, true),
+  (10, 24, true),
+  (10, 25, true),
+  (11, 9, false), --23, automation specialist
+  (11, 18, false),
+  (11, 19, false),
+  (11, 23, true),
+  (11, 24, true),
+  (11, 25, true),
+  (12, 1, false), --15, student
+  (12, 7, false),
+  (12, 13, false),
+  (12, 15, false),
+  (12, 17, true),
+  (12, 22, true),
+  (12, 23, true),
+  (12, 24, true),
+  (12, 25, true);

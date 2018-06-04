@@ -63,29 +63,6 @@ class ClientProfile extends Component {
         *bio:
         bio paragraph
 
-
-        */
-
-    /*
-    <Item.Group divided>
-
-     <Item>
-      <Item.Image src='/assets/images/wireframe/image.png' />
-
-      <Item.Content>
-        <Item.Header as='a'>12 Years a Slave</Item.Header>
-        <Item.Meta>
-          <span className='cinema'>Union Square 14</span>
-        </Item.Meta>
-        <Item.Description>{paragraph}</Item.Description>
-        <Item.Extra>
-          <Label>IMAX</Label>
-          <Label icon='globe' content='Additional Languages' />
-        </Item.Extra>
-      </Item.Content>
-    </Item>
-
-    </Item.Group >
         */
 
     return (
@@ -106,7 +83,7 @@ class ClientProfile extends Component {
 
                 <List>
                   <List.Item>
-                    <List.Header> Age: </List.Header>
+                    <List.Header>Age:</List.Header>
                     {client.age}
                   </List.Item>
                   <List.Item>
@@ -118,7 +95,9 @@ class ClientProfile extends Component {
                     {client.occupation}
                   </List.Item>
                 </List>
+                <Link to={`/client/${client.id}/journey`}>
                 <Button content="Journey Goals" color="teal" />
+                </Link>
               </Item.Content>
             </Item>
 
