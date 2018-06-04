@@ -41,7 +41,7 @@ CREATE TABLE clients (
   residential_address VARCHAR NOT NULL,
 	zipcode VARCHAR NOT NULL,
   phone_number VARCHAR(12) NOT NULL,
-	imgurl VARCHAR DEFAULT '/images/User-Profile-256.png',
+	imgurl VARCHAR DEFAULT '/images/User-Profile.png',
   bio VARCHAR,
   disability VARCHAR,
   medicaid boolean,
@@ -84,16 +84,16 @@ INSERT INTO providers (firstname, lastname, email, password_digest, occupation, 
   ('mike', 'mcd', 'mcdonald@mail.com', '$2a$10$kjH6HiZmn9y4jABk9PN3v.rHJ51RJWGo5nYPZba16hIX4YUr9CVjS', 'MSW', 'Male', '7 years in Social Work, helping clients become more dependent on themselves and financially independent', '10019', '696-425-1346', DEFAULT);
 
 --
-  
+
 INSERT INTO clients (firstname, lastname, email, age, occupation, gender, residential_address, zipcode, phone_number, imgurl, bio, disability, medicaid, provider_id) 
   VALUES 
-  ('Chadd', 'Lepere', 'clepere0@webnode.com', 12, 'Clinical Specialist', 'Male', '64393 Gateway Hill, NYC, NY', '10019', '681-833-4858', 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=140', 'Hello my name is _______, I come from _________. When I grow up, I would like to be a ________________.', 'autism spectrum', false, 1),
+  ('Chadd', 'Lepere', 'clepere0@webnode.com', 12, 'Clinical Specialist', 'Male', '64393 Gateway Hill, NYC, NY', '10019', '681-833-4858', 'https://cdn.pixabay.com/photo/2017/10/12/10/41/child-2844209_1280.jpg', 'Hello my name is _______, I come from _________. When I grow up, I would like to be a ________________.', 'autism spectrum', false, 1),
   ('Camella', 'Antrobus', 'cantrobus1@noaa.gov', 27, 'Graphic Designer', 'Female', '2 Helena Junction, NYC, NY', '10019', '268-109-7437', DEFAULT, 'Hello my name is _______, I come from _________. When I grow up, I would like to be a ________________.', 'autism spectrum', true, 2),
   ('Blondie', 'Andreaccio', 'bandreaccio2@pbs.org', 27, 'Quality Control Specialist', 'Female', '6 Stephen Place, NYC, NY', '10019', '239-270-6423', DEFAULT, 'Hello my name is _______, I come from _________. When I grow up, I would like to be a ________________.', 'autism spectrum', false, 1),
   ('Shaine', 'Carrol', 'scarrol3@tumblr.com', 15, 'Automation Specialist II', 'Male', '470 Twin Pines Circle, NYC, NY', '10019', '583-929-9660', DEFAULT, 'Hello my name is _______, I come from _________. When I grow up, I would like to be a ________________.', 'autism spectrum', false, 2),
   ('Christoph', 'Lieb', 'clieb4@senate.gov', 13, 'Systems Administrator II', 'Male', '1842 Emmet Drive, NYC, NY', '10019', '173-184-3962', DEFAULT, 'Hello my name is _______, I come from _________. When I grow up, I would like to be a ________________.', 'autism spectrum', true, 1),
   ('Vinita', 'Jedrzejewsky', 'vjedrzejewsky5@bluehost.com', 19, 'Nuclear Power Engineer', 'Female', '43366 Trailsway Way, NYC, NY', '10019', '982-380-3384', DEFAULT, 'Hello my name is _______, I come from _________. When I grow up, I would like to be a ________________.', 'autism spectrum', false, 2),
-  ('Krishnah', 'Luten', 'kluten6@weibo.com', 21, 'Chief Design Engineer', 'Male', '403 Waywood Alley, NYC, NY', '10019', '936-316-0710', DEFAULT, 'Hello my name is _______, I come from _________. When I grow up, I would like to be a ________________.', 'autism spectrum', true, 1),
+  ('Krishnah', 'Luten', 'kluten6@weibo.com', 21, 'Chief Design Engineer', 'Male', '403 Waywood Alley, NYC, NY', '10019', '936-316-0710', 'https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=140', 'Hello my name is _______, I come from _________. When I grow up, I would like to be a ________________.', 'autism spectrum', true, 1),
   ('Ardys', 'Grigorushkin', 'agrigorushkin7@unesco.org', 20, 'Computer Systems Analyst II', 'Female', '23796 Fulton Avenue, NYC, NY', '10019', '635-445-2226', DEFAULT, 'Hello my name is _______, I come from _________. When I grow up, I would like to be a ________________.', 'autism spectrum', false, 2),
   ('Ulla', 'Been', 'ubeen8@moonfruit.com', 30, 'Registered Nurse', 'Female', '57181 Independence Lane, NYC, NY', '10019', '807-382-9031', DEFAULT, 'Hello my name is _______, I come from _________. When I grow up, I would like to be a ________________.', 'autism spectrum', false, 1),
   ('Shani', 'Gostridge', 'sgostridge9@illinois.edu', 25, 'Software Consultant', 'Female', '2481 Menomonie Plaza, NYC, NY', '10019', '773-342-0963', DEFAULT, 'Hello my name is _______, I come from _________. When I grow up, I would like to be a ________________.', 'autism spectrum', true, 2),

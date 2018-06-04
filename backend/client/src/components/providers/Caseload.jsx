@@ -36,8 +36,8 @@ class Caseload extends Component {
     const { loggedInUser } = this.props;
     const { clients } = this.state;
     return (
-      <div id="caseload" className="center margin-top">
-        <Header as="h1">Caseload</Header>
+      <div id="caseload"  className="margin-top">
+        <Header as="h1" className="center" >Caseload</Header>
 
         <ClientCard 
         loggedInUser={loggedInUser} 

@@ -13,8 +13,12 @@ div.client-card > a {
 
 div.client-card {
     display: flex;
-    /* justify-content: center; */
     justify-content: space-around;
     flex-wrap: wrap;
     margin: 20px;
+}
+
+.adjust-image {
+    height: 256px;
+    object-fit: cover;
 }
