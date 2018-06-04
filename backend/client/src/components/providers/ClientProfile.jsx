@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 import { Link, Route, Switch } from "react-router-dom";
 import axios from "axios";
-import { Header, Icon, Image } from 'semantic-ui-react'
+import {
+  Header,
+  Icon,
+  Image,
+  List,
+  Button,
+  Item,
+  Label
+} from "semantic-ui-react";
 
 class ClientProfile extends Component {
   constructor() {
@@ -58,40 +66,85 @@ class ClientProfile extends Component {
 
         */
 
+    /*
+      import { Button, Icon, Image as ImageComponent, Item, Label } from 'semantic-ui-react'
+
+      const paragraph = <ImageComponent src='/assets/images/wireframe/short-paragraph.png' />
+
+      const ItemExampleDivided = () => (
+    <Item.Group divided>
+
+     <Item>
+      <Item.Image src='/assets/images/wireframe/image.png' />
+
+      <Item.Content>
+        <Item.Header as='a'>12 Years a Slave</Item.Header>
+        <Item.Meta>
+          <span className='cinema'>Union Square 14</span>
+        </Item.Meta>
+        <Item.Description>{paragraph}</Item.Description>
+        <Item.Extra>
+          <Label>IMAX</Label>
+          <Label icon='globe' content='Additional Languages' />
+        </Item.Extra>
+      </Item.Content>
+    </Item>
+
+    </Item.Group >
+        */
+
     return (
       <div id="client-profile" className="margin-top">
+        <div key={client.id} id="profile-header">
+          <Item.Group divided>
+            <Item>
+              <Image
+                src={client.imgurl}
+                alt={`${client.firstname} ${client.lastname}`}
+                rounded
+                className="adjust-image-profile"
+              />
+              <Item.Content>
+                <Item.Header className="margin-top">
+                  {`${client.firstname} ${client.lastname}`}
+                </Item.Header>
 
-        <div key={client.id}>
-          <div id="profile-header">
-            <img
-              src={client.imgurl}
-              alt={`${client.firstname} ${client.lastname}`}
-            />
-
-            <Header as="h1">{`${client.firstname} ${client.lastname}`}</Header>
-            <p>{client.age}</p>
-            <p>{client.gender}</p>
-            <p>{client.occupation}</p>
-          </div>
+                <List>
+                  <List.Item>
+                    <List.Header> Age: </List.Header>
+                    {client.age}
+                  </List.Item>
+                  <List.Item>
+                    <List.Header>Gender:</List.Header>
+                    {client.gender}
+                  </List.Item>
+                  <List.Item>
+                    <List.Header>Occupation:</List.Header>
+                    {client.occupation}
+                  </List.Item>
+                </List>
+                <Button content="Journey Goals" color="olive" />
+              </Item.Content>
+            </Item>
+          </Item.Group>
 
           <div id="profile-contact-info">
-          <h3>Contact Info:</h3>
+            <h3>Contact Info:</h3>
             <p>{client.email}</p>
             <p>{client.phone_number}</p>
             <p>{`${client.residential_address} ${client.zipcode}`}</p>
           </div>
 
-        <div id="profile-bio">
-        <h3>Bio:</h3>
-        <p>{client.bio}</p>
-        </div>
+          <div id="profile-bio">
+            <h3>Bio:</h3>
+            <p>{client.bio}</p>
+          </div>
 
-        <div id="profile-medical-info">
-        <h3>Medical Info:</h3>
-        <p>{client.disability}</p>
-        <p>Have medicaid? :{client.medicaid ? true : false}</p>
-        </div>
-
+          <div id="profile-medical-info">
+            <h3>Medical Info:</h3>
+            <p>{client.disability}</p>
+            <p>Have medicaid? :{client.medicaid ? true : false}</p>
+          </div>
         </div>
       </div>
     );

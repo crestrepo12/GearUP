@@ -108,6 +108,7 @@ class LoginUser extends Component {
               fluid
               icon="at"
               iconPosition="left"
+              required
             />
             <Form.Input
               type="password"
@@ -118,6 +119,7 @@ class LoginUser extends Component {
               fluid
               icon="lock"
               iconPosition="left"
+              required
             />
             <Button type="submit"> Login </Button>
             <br />

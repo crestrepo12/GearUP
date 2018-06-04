@@ -93,6 +93,7 @@ class RegisterUser extends Component {
               fluid
               icon="user"
               iconPosition="left"
+              required
             />
             <Form.Input
               type="text"
@@ -102,6 +103,7 @@ class RegisterUser extends Component {
               fluid
               icon="user"
               iconPosition="left"
+              required
             />
             <Form.Input
               type="email"
@@ -111,6 +113,7 @@ class RegisterUser extends Component {
               fluid
               icon="at"
               iconPosition="left"
+              required
             />
             <Form.Input
               type="password"
@@ -120,6 +123,7 @@ class RegisterUser extends Component {
               fluid
               icon="lock"
               iconPosition="left"
+              required
             />
             <Form.Input
               type="password"
@@ -129,6 +133,7 @@ class RegisterUser extends Component {
               fluid
               icon="lock"
               iconPosition="left"
+              required
             />
             <Button type="submit" value="Submit">
               {" "}

@@ -2,13 +2,14 @@
     overflow: auto;
 }
 
+
 div.client-card > a {
     width: 293px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     margin: 10px;
-
+    
 }
 
 div.client-card {
@@ -21,4 +22,15 @@ div.client-card {
 .adjust-image {
     height: 256px;
     object-fit: cover;
+}
+
+.adjust-image-profile {
+    width: 300px;
+    height: 230px;
+    object-fit: cover;
+}
+
+#client-profile {
+    margin-right: 5%;
+    margin-left: 5%;
 }
