@@ -67,11 +67,6 @@ class ClientProfile extends Component {
         */
 
     /*
-      import { Button, Icon, Image as ImageComponent, Item, Label } from 'semantic-ui-react'
-
-      const paragraph = <ImageComponent src='/assets/images/wireframe/short-paragraph.png' />
-
-      const ItemExampleDivided = () => (
     <Item.Group divided>
 
      <Item>
@@ -105,7 +100,7 @@ class ClientProfile extends Component {
                 className="adjust-image-profile"
               />
               <Item.Content>
-                <Item.Header className="margin-top">
+                <Item.Header>
                   {`${client.firstname} ${client.lastname}`}
                 </Item.Header>
 
@@ -123,28 +118,48 @@ class ClientProfile extends Component {
                     {client.occupation}
                   </List.Item>
                 </List>
-                <Button content="Journey Goals" color="olive" />
+                <Button content="Journey Goals" color="teal" />
+              </Item.Content>
+            </Item>
+
+            <Item>
+              <Item.Content id="profile-contact-info">
+                <Item.Header>Contact Info:</Item.Header>
+
+                <Item.Description>
+                  <Label>Email</Label>
+                  {" " + client.email}
+                </Item.Description>
+
+                <Item.Description>
+                  <Label>Phone</Label>
+                  {" " + client.phone_number}
+                </Item.Description>
+
+                <Item.Description>
+                  <Label> Residential Address</Label>
+                  {` ${client.residential_address} ${client.zipcode}`}
+                </Item.Description>
+              </Item.Content>
+            </Item>
+            <Item>
+              <Item.Content>
+                <div id="profile-bio">
+                  <h3>Bio:</h3>
+                  <p>{client.bio}</p>
+                </div>
+              </Item.Content>
+            </Item>
+            <Item>
+              <Item.Content>
+                <div id="profile-medical-info">
+                  <h3>Medical Info:</h3>
+                  <p>{client.disability}</p>
+                  <p>Have medicaid? :{client.medicaid ? true : false}</p>
+                </div>
               </Item.Content>
             </Item>
           </Item.Group>
-
-          <div id="profile-contact-info">
-            <h3>Contact Info:</h3>
-            <p>{client.email}</p>
-            <p>{client.phone_number}</p>
-            <p>{`${client.residential_address} ${client.zipcode}`}</p>
-          </div>
-
-          <div id="profile-bio">
-            <h3>Bio:</h3>
-            <p>{client.bio}</p>
-          </div>
-
-          <div id="profile-medical-info">
-            <h3>Medical Info:</h3>
-            <p>{client.disability}</p>
-            <p>Have medicaid? :{client.medicaid ? true : false}</p>
-          </div>
         </div>
       </div>
     );

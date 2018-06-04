@@ -14,7 +14,7 @@ div.client-card > a {
 
 div.client-card {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-wrap: wrap;
     margin: 20px;
 }

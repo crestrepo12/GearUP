@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Link, Route, Switch } from "react-router-dom";
 import axios from "axios";
+import { Button } from "semantic-ui-react";
 
 class Navbar extends Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class Navbar extends Component {
         </div>
         <div id="navbar-right">
           <Link to="/caseload"> Clients </Link>
-          <input type="button" value="Log Out" onClick={this.signOutUser} />
+          <Button content="Log Out" onClick={this.signOutUser} color="orange"/>
         </div>
       </nav>
     );
