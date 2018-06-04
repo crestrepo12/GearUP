@@ -13,16 +13,17 @@
 }
 
 .login-container {
-    width: 500px;
+    width: 400px;
 }
 
 /* register/home page */
 
 .home-page {
-    padding: 0 30px;
+    padding: 0 50px;
+    text-align: justify;
 }
 
 .register-container {
-    padding: 0 5%;
+    padding: 0 8%;
 }
 

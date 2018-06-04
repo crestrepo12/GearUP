@@ -101,37 +101,50 @@ const getClientById = (req, res, next) => {
   })
 }
 
-const getCustomObjectiveListByClient = (req, res, next) => {
+// const getCustomObjectiveListByClient = (req, res, next) => {
+//   db
+//   .any('SELECT client_objectives.client_id, clients.firstname, clients.lastname, clients.age, client_objectives.objective, client_objectives.accomplished FROM client_objectives JOIN clients ON client_objectives.client_id=clients.id WHERE clients.id=${client_id}', {client_id: req.params.client_id})
+//   .then(client => {
+//     res.status(200)
+//     .json({
+//       status: 'success',
+//       client_custom_list: client,
+//       message: `Retrieved client ${client.length} custom objectives from list`
+//     })
+//   })
+// }
+
+const getAllLifeSkillCategoriesById = (req, res, next) => {
   db
-  .any('SELECT client_objectives.client_id, clients.firstname, clients.lastname, clients.age, client_objectives.objective, client_objectives.accomplished FROM client_objectives JOIN clients ON client_objectives.client_id=clients.id WHERE clients.id=${client_id}', {client_id: req.params.client_id})
-  .then(client => {
-    res.status(200)
-    .json({
-      status: 'success',
-      client_custom_list: client,
-      message: `Retrieved client ${client.length} custom objectives from list`
+    .any('SELECT * FROM life_skills WHERE id=${life_skills_id}', {life_skills_id: req.params.life_skills_id})
+    .then(skills => {
+      res.status(200)
+      .json({
+        status: 'success',
+        skill_categories: skills,
+        message: `Retrieved client ${skills.length} from list`
+      })
     })
-  })
 }
 
-const getGeneralObjectiveList = (req, res, next) => {
+const getJourneyGoalsByClientId = (req, res, next) => {
   db
-  .any('SELECT general_objectives.age_group_id, age_group.age_group_range, general_objectives.objective, general_objectives.accomplished FROM general_objectives JOIN age_group ON general_objectives.age_group_id=age_group.id WHERE general_objectives.age_group_id=${age_group_id}', {age_group_id: req.params.age_group_id})
-  .then(client => {
-    res.status(200)
-    .json({
-      status: 'success',
-      client_general_list: client,
-      message: `Retrieved ${client.length} general objectives`
+    .any('SELECT clients.id, clients.firstname, clients.lastname, life_skills.categories, objectives.objective, client_objectives.objective_accomplished FROM clients JOIN client_objectives ON client_objectives.client_id = clients.id JOIN objectives ON objectives.id = client_objectives.objective_id JOIN life_skills ON life_skills.id = objectives.life_skills_id WHERE clients.id=${client_id}', {client_id: req.params.client_id})
+    .then(goals => {
+      res.status(200)
+      .json({
+        status: 'success',
+        goals: goals,
+        message: `Retrieved ${goals.length} from client's goal list`
+      })
     })
-  })
 }
-
 
 
 /**
  * queries left to do:
  * add client
+ * getAllLifeSkillCategories
  * 
  */
 
@@ -143,8 +156,10 @@ module.exports = {
   logoutUser,
   getAllClientsByProviderId,
   getClientById,
-  getCustomObjectiveListByClient,
-  getGeneralObjectiveList
+  getAllLifeSkillCategoriesById,
+  getJourneyGoalsByClientId,
+  // getCustomObjectiveListByClient,
+  // getGeneralObjectiveList
 };
 
 
