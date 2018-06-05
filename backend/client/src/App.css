@@ -83,5 +83,18 @@ button.ui.button {
   justify-content: space-evenly;
 }
 
-/* --- Home/Register Page --- */
 
+/* journey track */
+
+#journey-track {
+  display: flex;
+  flex-direction: column;
+  text-align: center
+}
+
+#journey-container {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
