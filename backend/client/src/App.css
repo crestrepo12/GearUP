@@ -98,3 +98,7 @@ button.ui.button {
   flex-direction: column;
   margin: 0 auto;
 }
+
+div.ui.vertical.accordion.fluid.menu {
+  margin: auto;
+}
