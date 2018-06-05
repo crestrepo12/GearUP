@@ -100,5 +100,5 @@ button.ui.button {
 }
 
 div.ui.vertical.accordion.fluid.menu {
-  margin: auto;
+  margin: 0;
 }
