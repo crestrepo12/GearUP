@@ -75,12 +75,27 @@ button.ui.button {
   justify-content: flex-start;
 }
 
+#navbar-left > a {
+  width: 250px;
+  display: inline-flex;
+  align-items: center;
+}
+
+#navbar-left > a > img.ui.image {
+  margin-right: 3%;
+}
+
 #navbar-right {
   width: 50%;
   margin: auto;
+  margin-right: 3%;
   display: flex;
   justify-content: flex-end;
-  justify-content: space-evenly;
+}
+
+#navbar-right > a,
+#navbar-right > button {
+  margin: 0 20px;
 }
 
 
@@ -101,4 +116,16 @@ button.ui.button {
 
 div.ui.vertical.accordion.fluid.menu {
   margin: 0;
+}
+
+div.ui.medium.image {
+  width: 155px;
+}
+
+.form-container {
+  width: 650px;
+}
+
+form.ui.form.form-container {
+  margin-bottom: 30px;
 }

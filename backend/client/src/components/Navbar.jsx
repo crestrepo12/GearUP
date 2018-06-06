@@ -2,8 +2,8 @@ import React, { Component, Fragment } from "react";
 import { Link, Route, Switch } from "react-router-dom";
 import axios from "axios";
 import { Button } from "semantic-ui-react";
-import ModalExampleScrollingContent from "./providers/AddClientModal";
-
+import AddClientModal from "./providers/AddClientModal";
+import { Image } from "semantic-ui-react";
 class Navbar extends Component {
   constructor(props) {
     super(props);
@@ -29,12 +29,13 @@ class Navbar extends Component {
       <nav id="navigation-bar">
         <div id="navbar-left">
           <Link to="/">
-            <h2>GearUP</h2>
+            <Image src="GearUpIcon.png" alt="logo" />
+            <h2> GearUP </h2>
           </Link>
         </div>
         <div id="navbar-right">
-          <Button content="Log Out" onClick={this.signOutUser} color="orange"/>
-          <Button content="Add Client" color="teal"/>
+          <AddClientModal loggedInUser={this.props.loggedInUser}/>
+          <Button content="Log Out" onClick={this.signOutUser} color="orange" />
         </div>
       </nav>
     );
@@ -45,6 +46,7 @@ class Navbar extends Component {
       <nav id="navigation-bar">
         <div id="navbar-left">
           <Link to="/">
+          <Image src="GearUpIcon.png" alt="logo" />
             <h2>GearUP</h2>
           </Link>
         </div>
