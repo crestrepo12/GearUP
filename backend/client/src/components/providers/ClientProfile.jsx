@@ -45,33 +45,14 @@ class ClientProfile extends Component {
     const { client_id } = this.props;
     const { client } = this.state;
 
-    /* 
-   Style as a LinkedIn profile/ Instagram, give it a young crowd feel that people are use to.
-
-        *profile header:
-        picture
-        full name
-        age
-        gender
-        occupation
-
-        *contact info:
-        email
-        phone
-        residential address
-
-        *bio:
-        bio paragraph
-
-        */
-
     return (
       <div id="client-profile" className="margin-top">
         <div key={client.id} id="profile-header">
           <Item.Group divided>
             <Item>
+
               <Image
-                src={client.imgurl}
+                src={client.imgurl === "" ? "User-Profile.png" : client.imgurl}
                 alt={`${client.firstname} ${client.lastname}`}
                 rounded
                 className="adjust-image-profile"
@@ -133,8 +114,8 @@ class ClientProfile extends Component {
               <Item.Content>
                 <div id="profile-medical-info">
                   <h3>Medical Info:</h3>
-                  <p>{client.disability}</p>
-                  <p>Have medicaid? :{client.medicaid ? true : false}</p>
+                  <p>Disability: {client.disability}</p>
+                  <p>Have medicaid?: {client.medicaid ? "Yes" : "No"}</p>
                 </div>
               </Item.Content>
             </Item>

@@ -141,6 +141,7 @@ const getJourneyGoalsByClientId = (req, res, next) => {
 }
 
 function addClient(req, res, next) {
+  console.log("add client fired")
   db
     .none(
       "INSERT INTO clients (firstname, lastname, email, age, occupation, gender, residential_address, zipcode, phone_number, imgurl, bio, disability, medicaid, provider_id) VALUES (${firstname}, ${lastname}, ${email}, ${age}, ${occupation}, ${gender}, ${residential_address}, ${zipcode}, ${phone_number}, ${imgurl}, ${bio}, ${disability}, ${medicaid}, ${provider_id})",

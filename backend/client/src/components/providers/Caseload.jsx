@@ -32,10 +32,10 @@ class Caseload extends Component {
       });
   }
 
-  addClientByProvider = () => {
+  // addClientByProvider = () => {
 
-    axios
-  }
+  //   axios
+  // }
 
   render() {
     const { loggedInUser } = this.props;

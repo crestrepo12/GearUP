@@ -1,7 +1,7 @@
 import _ from "lodash";
 import React, { Component } from "react";
 import axios from "axios";
-import { Button, Header, Icon, Image, Modal, Form } from "semantic-ui-react";
+import { Button, Header, Icon, Image, Modal, Form, Message } from "semantic-ui-react";
 
 const options = [
   { key: "m", text: "Male", value: "male" },
@@ -26,7 +26,8 @@ class AddClientModal extends Component {
       bio: "",
       disability: "",
       medicaid: "",
-      submitted: false
+      submitted: false,
+      message: ""
     };
   }
 
@@ -34,7 +35,7 @@ class AddClientModal extends Component {
     // e.preventDefault();
     console.log("im trying to submit new client");
     axios
-      .post(`/add_client`, {
+      .post(`/users/add_client`, {
         firstname: this.state.firstname,
         lastname: this.state.lastname,
         email: this.state.email,
@@ -51,8 +52,26 @@ class AddClientModal extends Component {
       })
       .then(res => {
         console.log(res);
+
+        
+
+
         this.setState({
-          submitted: true
+          firstname: "",
+          lastname: "",
+          email: "",
+          age: "",
+          occupation: "",
+          gender: "",
+          residential_address: "",
+          zipcode: "",
+          phone_number: "",
+          imgurl: "",
+          bio: "",
+          disability: "",
+          medicaid: "",
+          submitted: true,
+          message: "Congratulations on your new client!"
         });
       })
       .catch(err => {
@@ -86,7 +105,8 @@ class AddClientModal extends Component {
       disability,
       medicaid,
       submitted,
-      value
+      value,
+      message
     } = this.state;
 
     const { handleInput, handleRadioChange, addNewClientSubmitForm } = this;
@@ -97,6 +117,7 @@ class AddClientModal extends Component {
       <Modal trigger={<Button color="teal"> Add Client </Button>} closeIcon>
         <Modal.Header>Client Form</Modal.Header>
         <Modal.Content image scrolling>
+
           <Image
             size="medium"
             src="User-Profile.png"
@@ -137,6 +158,7 @@ class AddClientModal extends Component {
                   options={options}
                   onChange={this.handleChange}
                   value={gender}
+                  required
                 />
               </Form.Group>
 
@@ -169,6 +191,7 @@ class AddClientModal extends Component {
                   name="occupation"
                   value={occupation}
                   onChange={handleInput}
+                  required
                 />
               </Form.Group>
 
@@ -249,11 +272,15 @@ class AddClientModal extends Component {
               <Form.TextArea
                 label="Bio"
                 name="bio"
+                value={bio}
                 placeholder="Tell us more about your new client..."
                 onChange={handleInput}
+                required
               />
 
               <Form.Button>Submit</Form.Button>
+
+              <div>{submitted ? <Message color='teal' content={message} />: ""}</div>
             </Form>
           </Modal.Description>
         </Modal.Content>
