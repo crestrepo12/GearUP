@@ -22,7 +22,6 @@ class ClientCard extends Component {
                   alt={client.imgurl}
                   className="adjust-image"
                 />
-
                 <Card.Content>
                   <Card.Header>{`${client.firstname} ${
                     client.lastname

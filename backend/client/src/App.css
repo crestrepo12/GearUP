@@ -104,7 +104,8 @@ button.ui.button {
 #journey-track {
   display: flex;
   flex-direction: column;
-  text-align: center
+  text-align: center;
+  height: 100vh;
 }
 
 #journey-container {
@@ -136,4 +137,13 @@ form.ui.form.form-container {
   flex-direction: column;
   justify-content: center;
   text-align: center;
+}
+
+#client-profile {
+  overflow: auto;
+  margin-bottom: 2%;
+}
+
+.back-button {
+  float: right;
 }

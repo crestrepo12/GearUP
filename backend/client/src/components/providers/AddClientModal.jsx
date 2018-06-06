@@ -1,7 +1,16 @@
 import _ from "lodash";
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
-import { Button, Header, Icon, Image, Modal, Form, Message } from "semantic-ui-react";
+import {
+  Button,
+  Header,
+  Icon,
+  Image,
+  Modal,
+  Form,
+  Message
+} from "semantic-ui-react";
 
 const options = [
   { key: "m", text: "Male", value: "male" },
@@ -52,10 +61,6 @@ class AddClientModal extends Component {
       })
       .then(res => {
         console.log(res);
-
-        
-
-
         this.setState({
           firstname: "",
           lastname: "",
@@ -117,7 +122,6 @@ class AddClientModal extends Component {
       <Modal trigger={<Button color="teal"> Add Client </Button>} closeIcon>
         <Modal.Header>Client Form</Modal.Header>
         <Modal.Content image scrolling>
-
           <Image
             size="medium"
             src="User-Profile.png"
@@ -280,7 +284,9 @@ class AddClientModal extends Component {
 
               <Form.Button>Submit</Form.Button>
 
-              <div>{submitted ? <Message color='teal' content={message} />: ""}</div>
+              <div>
+                {submitted ? <Message color="teal" content={message} /> : ""}
+              </div>
             </Form>
           </Modal.Description>
         </Modal.Content>

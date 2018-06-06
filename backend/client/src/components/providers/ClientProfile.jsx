@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, Route, Switch } from "react-router-dom";
+import { Link, Route, Switch, Redirect } from "react-router-dom";
 import axios from "axios";
 import {
   Header,
@@ -50,9 +50,10 @@ class ClientProfile extends Component {
         <div key={client.id} id="profile-header">
           <Item.Group divided>
             <Item>
-
               <Image
-                src={client.imgurl === "" ? "User-Profile.png" : client.imgurl}
+                src={
+                  client.imgurl === null ? "User-Profile.png" : client.imgurl
+                }
                 alt={`${client.firstname} ${client.lastname}`}
                 rounded
                 className="adjust-image-profile"
@@ -77,7 +78,7 @@ class ClientProfile extends Component {
                   </List.Item>
                 </List>
                 <Link to={`/client/${client.id}/journey`}>
-                <Button content="Journey Goals" color="teal" />
+                  <Button content="Journey Goals" color="teal" />
                 </Link>
               </Item.Content>
             </Item>
@@ -111,12 +112,17 @@ class ClientProfile extends Component {
               </Item.Content>
             </Item>
             <Item>
-              <Item.Content>
-                <div id="profile-medical-info">
-                  <h3>Medical Info:</h3>
-                  <p>Disability: {client.disability}</p>
-                  <p>Have medicaid?: {client.medicaid ? "Yes" : "No"}</p>
-                </div>
+              <Item.Content id="profile-medical-info">
+                <Header as="h3">Medical Info:</Header>
+                <Item.Description>
+                  <Label>Disability</Label>
+                  {` ${client.disability}`}
+                </Item.Description>
+
+                <Item.Description>
+                  <Label>Have medicaid?</Label>
+                  {` ${client.medicaid ? "Yes" : "No"}`}
+                </Item.Description>
               </Item.Content>
             </Item>
           </Item.Group>

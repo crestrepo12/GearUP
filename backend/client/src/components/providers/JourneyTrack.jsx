@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Link, Route, Switch } from "react-router-dom";
+import { Link, Route, Switch, Redirect } from "react-router-dom";
 import axios from "axios";
-import { Accordion, Form, Menu, Header } from "semantic-ui-react";
+import { Accordion, Form, Menu, Header, Button } from "semantic-ui-react";
 
 class JourneyTrack extends Component {
   constructor() {
@@ -147,30 +147,6 @@ class JourneyTrack extends Component {
       </div>
     );
   }
-}
-
-function Objectives(props) {
-  const { objectives } = this.props;
-  console.log("onj", props.objectives);
-
-  return (
-    <div>
-      {/* {props.objectives.map((objective, ind) => {
-
-        console.log(objective, ind)
-        <Form >
-          <Form.Group grouped  >
-            <Form.Checkbox
-              label={objective[ind].objective}
-              name="objectives"
-              value={objective[ind].objectives_id}
-              key={objective[ind].objectives_id}
-            />
-          </Form.Group>
-        </Form>;
-      })} */}
-    </div>
-  );
 }
 
 export default JourneyTrack;
