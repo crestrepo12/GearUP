@@ -24,12 +24,13 @@ router.post('/login', (req, res, next) => {
             res.status(200)
             res.json({
                 user: req.user,
-                message: `Welcome ${req.user.email}!`
+                message: `Welcome ${req.user.email}, ${req.user.id}!`
             })
         })
     }) (req, res, next)
 
 });
+router.post('/add_client', loginRequired, db.addClient);
 
 // Get Methods
 router.get('/', (req, res, next) => res.status(200)
@@ -40,8 +41,6 @@ router.get('/client/:client_id', db.getClientById);
 router.get('/clients/:provider_id', db.getAllClientsByProviderId);
 router.get('/all_skill_categories',db.getAllLifeSkillCategoriesById);
 router.get('/client_goals/:client_id', db.getJourneyGoalsByClientId);
-// router.get('/client/:client_id/custom_objectives', db.getCustomObjectiveListByClient);
-// router.get('/client/:age_group_id/general_objectives', db.getGeneralObjectiveList)
 
 // Patch Methods 
 

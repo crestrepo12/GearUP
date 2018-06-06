@@ -57,7 +57,6 @@ class App extends Component {
   };
 
   renderJourneyTrack = routeProps => {
-    console.log("routeProps:", routeProps);
     return <JourneyTrack client_id={routeProps.match.params.client_id} />
   }
 

@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import { Link, Route, Switch } from "react-router-dom";
 import axios from "axios";
 import { Button } from "semantic-ui-react";
+import ModalExampleScrollingContent from "./providers/AddClientModal";
 
 class Navbar extends Component {
   constructor(props) {
@@ -33,6 +34,7 @@ class Navbar extends Component {
         </div>
         <div id="navbar-right">
           <Button content="Log Out" onClick={this.signOutUser} color="orange"/>
+          <Button content="Add Client" color="teal"/>
         </div>
       </nav>
     );

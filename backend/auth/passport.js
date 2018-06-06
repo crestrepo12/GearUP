@@ -44,7 +44,7 @@ passport.use(
         if (!authHelpers.comparePass(password, user.password_digest)) {
           return done(null, false, { message: "Incorrect password." });
         }
-        return done(null, user, { message: "All is well." });
+        return done(null, { id: user.id, email: user.email });
       })
       .catch(err => {
         console.log("error from passport: ", err);

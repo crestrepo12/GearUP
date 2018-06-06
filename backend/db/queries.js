@@ -129,17 +129,46 @@ const getAllLifeSkillCategoriesById = (req, res, next) => {
 
 const getJourneyGoalsByClientId = (req, res, next) => {
   db
-    .any('SELECT clients.id AS client_id, clients.firstname, clients.lastname, life_skills.id AS life_skill_id, life_skills.categories, objectives.objective, client_objectives.objective_accomplished FROM clients JOIN client_objectives ON client_objectives.client_id = clients.id JOIN objectives ON objectives.id = client_objectives.objective_id JOIN life_skills ON life_skills.id = objectives.life_skills_id WHERE clients.id=${client_id}', {client_id: req.params.client_id})
-    .then(data => {
+    .any('SELECT clients.id AS client_id, clients.firstname, clients.lastname, life_skills.id AS life_skill_id, life_skills.categories, objectives.id AS objectives_id, objectives.objective, client_objectives.objective_accomplished FROM clients JOIN client_objectives ON client_objectives.client_id = clients.id JOIN objectives ON objectives.id = client_objectives.objective_id JOIN life_skills ON life_skills.id = objectives.life_skills_id WHERE clients.id=${client_id}', {client_id: req.params.client_id})
+    .then(objectives => {
       res.status(200)
       .json({
         status: 'success',
-        data: data,
-        message: `Retrieved ${data.length} goal(s) from client's list`
+        objectives: objectives,
+        message: `Retrieved ${objectives.length} goal(s) from client's list`
       })
     })
 }
 
+function addClient(req, res, next) {
+  db
+    .none(
+      "INSERT INTO clients (firstname, lastname, email, age, occupation, gender, residential_address, zipcode, phone_number, imgurl, bio, disability, medicaid, provider_id) VALUES (${firstname}, ${lastname}, ${email}, ${age}, ${occupation}, ${gender}, ${residential_address}, ${zipcode}, ${phone_number}, ${imgurl}, ${bio}, ${disability}, ${medicaid}, ${provider_id})",
+      {
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        age: req.body.age,
+        occupation: req.body.occupation,
+        gender: req.body.gender,
+        residential_address: req.body.residential_address,
+        zipcode: req.body.zipcode,
+        phone_number: req.body.phone_number,
+        imgurl: req.body.imgurl,
+        bio: req.body.bio,
+        disability: req.body.disability,
+        medicaid: req.body.medicaid,
+        provider_id: req.user.id
+      }
+    )
+    .then(() => {
+      res.status(200)
+      .send("added child user bio into database");
+    })
+    .catch(err => {
+      console.log('error adding client', err);
+    });
+}
 /**
  * QUERIES LEFT TO DO:
  * add client
@@ -158,6 +187,7 @@ module.exports = {
   getClientById,
   getAllLifeSkillCategoriesById,
   getJourneyGoalsByClientId,
+  addClient
 };
 
 
