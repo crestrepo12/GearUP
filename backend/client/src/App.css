@@ -129,3 +129,11 @@ div.ui.medium.image {
 form.ui.form.form-container {
   margin-bottom: 30px;
 }
+
+.tagline {
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
