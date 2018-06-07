@@ -10,6 +10,7 @@ class JourneyTrack extends Component {
     this.state = {
       client: {},
       life_skills: [],
+      life_skills_id: {},
       category_id: {},
       objectives: [],
       activeIndex: 0
@@ -102,9 +103,15 @@ class JourneyTrack extends Component {
   };
 
   render() {
-    const { client, life_skills, objectives, activeIndex } = this.state;
+    const { client, 
+      life_skills, 
+      life_skills_id,
+      category_id,
+      objectives, 
+      activeIndex 
+    } = this.state;
     const { client_id } = this.props;
-
+    
     console.log("state journey: ",this.state)
 
     return (
@@ -150,3 +157,6 @@ class JourneyTrack extends Component {
 }
 
 export default JourneyTrack;
+
+
+
