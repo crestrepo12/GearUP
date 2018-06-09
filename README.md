@@ -18,6 +18,7 @@ I wanted to build this web application to solve the problem of social workers/ca
 [![https://gyazo.com/7cf435d33da15f5d1e67fdea817bfd39](https://i.gyazo.com/7cf435d33da15f5d1e67fdea817bfd39.gif)](https://gyazo.com/7cf435d33da15f5d1e67fdea817bfd39)
 #### fig 3. A Demo Log in.
 
+---
 [![https://gyazo.com/32a4a07acb3bd691fec2804f6afacddb](https://i.gyazo.com/32a4a07acb3bd691fec2804f6afacddb.png)](https://gyazo.com/32a4a07acb3bd691fec2804f6afacddb)
 #### fig 4. Adding A New Client Form
 
