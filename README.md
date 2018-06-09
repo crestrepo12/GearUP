@@ -23,7 +23,7 @@ I wanted to build this web application to solve the problem of social workers/ca
 #### fig 4. Adding A New Client Form
 
 
-
+--- 
 ### The Future of GearUp
 
 GearUp is still a working progress and will add more features to will seem neccessary especially for the social services industry. These are the following features I'll be looking forward to implement:
