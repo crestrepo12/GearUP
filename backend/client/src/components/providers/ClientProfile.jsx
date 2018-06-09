@@ -77,9 +77,9 @@ class ClientProfile extends Component {
                     {client.occupation}
                   </List.Item>
                 </List>
-                <Link to={`/client/${client.id}/journey`}>
+                {/* <Link to={`/client/${client.id}/journey`}>
                   <Button content="Journey Goals" color="teal" />
-                </Link>
+                </Link> */}
               </Item.Content>
             </Item>
 

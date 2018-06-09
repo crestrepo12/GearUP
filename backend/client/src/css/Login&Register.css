@@ -16,11 +16,22 @@
     width: 400px;
 }
 
-/* register/home page */
+/* --- register/home page --- */
 
 .home-page {
     padding: 0 50px;
     text-align: justify;
+}
+
+.circle-block {
+    background-color: #00b5ad;
+    margin: 5% 10%;
+    padding: 3%;
+    border-radius: 50%;
+  }
+
+h1.ui.white.header {
+      color: white;
 }
 
 .register-container {

@@ -9,16 +9,13 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="home-page yellow full-height fifty-width">
+      <div className="home-page full-height fifty-width">
         {/* <Header as="h2" className="center">
           Gear UP
         </Header> */}
-        <div className="tagline">
-          <Header as="h1" >
-            Modernizing Special Needs
-          </Header>
-          <Header as="h1" >
-            Case Management
+        <div className="tagline circle-block" >
+          <Header as="h1" color="white">
+            Modernizing Special Needs Case Management
           </Header>
         </div>
       </div>

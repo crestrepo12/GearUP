@@ -1,7 +1,7 @@
--- DROP DATABASE IF EXISTS gearup;
--- CREATE DATABASE gearup;
+DROP DATABASE IF EXISTS gearup;
+CREATE DATABASE gearup;
 
--- \c gearup;
+\c gearup;
 
 CREATE TABLE providers (
   ID SERIAL PRIMARY KEY UNIQUE,

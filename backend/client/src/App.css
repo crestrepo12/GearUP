@@ -1,4 +1,7 @@
 /* --- Overall styling --- */
+/* .teal {
+  color: #00b5ad;
+} */
 
 .center {
   text-align: center;
@@ -147,3 +150,6 @@ form.ui.form.form-container {
 .back-button {
   float: right;
 }
+
+/* --- Home --- */
+
