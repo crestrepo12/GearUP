@@ -15,7 +15,7 @@ class Home extends Component {
         </Header> */}
         <div className="tagline circle-block" >
           <Header as="h1" color="white">
-            Modernizing Special Needs Case Management
+            Modernizing Special Needs Case Management.
           </Header>
         </div>
       </div>
