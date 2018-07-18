@@ -1,5 +1,8 @@
 # GearUP
 
+## Live
+[Click here to check out the web app live!](https://gearup-management.herokuapp.com/)
+
 ## Introduction
 Welcome to GearUp the app that modernizes case management.
 
