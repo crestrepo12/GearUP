@@ -133,6 +133,7 @@ class AddClientModal extends Component {
                 <Form.Input
                   fluid
                   label="First name"
+                  aria-label="First name"
                   placeholder="First name"
                   type="text"
                   name="firstname"
@@ -143,6 +144,7 @@ class AddClientModal extends Component {
                 <Form.Input
                   fluid
                   label="Last name"
+                  aria-label="Last name"
                   placeholder="Last name"
                   type="text"
                   name="lastname"
@@ -154,6 +156,7 @@ class AddClientModal extends Component {
                 <Form.Select
                   fluid
                   label="Gender"
+                  aria-label="Gender"
                   placeholder="Gender"
                   name="gender"
                   selection
@@ -168,6 +171,7 @@ class AddClientModal extends Component {
                 <Form.Input
                   fluid
                   label="Email"
+                  aria-label="Email"
                   placeholder="Email"
                   type="email"
                   name="email"
@@ -178,6 +182,7 @@ class AddClientModal extends Component {
                 <Form.Input
                   width={4}
                   label="Age"
+                  aria-label="Age"
                   placeholder="Age"
                   type="text"
                   name="age"
@@ -188,6 +193,7 @@ class AddClientModal extends Component {
                 <Form.Input
                   fluid
                   label="Occupation"
+                  aria-label="Occupation"
                   placeholder="Occupation"
                   type="text"
                   name="occupation"
@@ -201,6 +207,7 @@ class AddClientModal extends Component {
                 <Form.Input
                   fluid
                   label="Residential Address"
+                  aria-label="Residential Address"
                   placeholder="Residential Address"
                   type="text"
                   name="residential_address"
@@ -211,6 +218,7 @@ class AddClientModal extends Component {
                 <Form.Input
                   width={6}
                   label="Zipcode"
+                  aria-label="Zipcode"
                   placeholder="Zipcode"
                   type="text"
                   name="zipcode"
@@ -223,6 +231,7 @@ class AddClientModal extends Component {
                 <Form.Input
                   fluid
                   label="Phone Number"
+                  aria-label="Phone Number"
                   placeholder="XXX-XXX-XXXX"
                   type="text"
                   name="phone_number"
@@ -233,6 +242,7 @@ class AddClientModal extends Component {
                 <Form.Input
                   fluid
                   label="Image URL"
+                  aria-label="Image URL"
                   placeholder="Image URL"
                   type="text"
                   name="imgurl"
@@ -244,6 +254,7 @@ class AddClientModal extends Component {
               <Form.Input
                 width={8}
                 label="Disability"
+                aria-label="Disability"
                 placeholder="Disability"
                 type="text"
                 name="disability"
@@ -256,6 +267,7 @@ class AddClientModal extends Component {
                 <label>Medicaid</label>
                 <Form.Radio
                   label="Yes"
+                  aria-label="Yes"
                   name="medicaid"
                   value="true"
                   checked={medicaid === "true"}
@@ -265,6 +277,7 @@ class AddClientModal extends Component {
                 <Form.Radio
                   name="medicaid"
                   label="No"
+                  aria-label="No"
                   value="false"
                   checked={medicaid === "false"}
                   onChange={handleRadioChange}
@@ -273,6 +286,7 @@ class AddClientModal extends Component {
               </Form.Group>
               <Form.TextArea
                 label="Bio"
+                aria-label="Bio"
                 name="bio"
                 value={bio}
                 placeholder="Tell us more about your new client..."
