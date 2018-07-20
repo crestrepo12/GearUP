@@ -14,7 +14,7 @@ CREATE TABLE providers (
   bio VARCHAR,
 	zipcode VARCHAR,
   phone_number VARCHAR(12),
-	imgurl VARCHAR DEFAULT '/images/User-Profile-256.png',
+	imgurl VARCHAR DEFAULT '/images/User-Profile.png',
   company_name VARCHAR
 );
 
@@ -86,7 +86,7 @@ INSERT INTO clients (firstname, lastname, email, age, occupation, gender, reside
   VALUES 
   ('Chadd', 'Lepere', 'clepere0@webnode.com', 12, 'Student', 'Male', '64393 Gateway Hill, NYC, NY', '10019', '681-833-4858', 'https://images.pexels.com/photos/670740/pexels-photo-670740.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', 'Hello my name is _______, I come from _________. When I grow up, I would like to be a ________________.', 'autism spectrum', DEFAULT, 1),
   ('Camella', 'Antrobus', 'cantrobus1@noaa.gov', 27, 'Graphic Designer', 'Female', '2 Helena Junction, NYC, NY', '10019', '268-109-7437', DEFAULT, 'Hello my name is _______, I come from _________. When I grow up, I would like to be a ________________.', 'autism spectrum', true, 2),
-  ('Blondie', 'Andreaccio', 'bandreaccio2@pbs.org', 27, 'College Student', 'Female', '6 Stephen Place, NYC, NY', '10019', '239-270-6423', 'https://cdn.pixabay.com/photo/2017/10/27/16/56/young-2894884_1280.jpg', 'Hello my name is _______, I come from _________. When I grow up, I would like to be a ________________.', 'autism spectrum', DEFAULT, 1),
+  ('Blondie', 'Andreaccio', 'bandreaccio2@pbs.org', 27, 'College Student', 'Female', '6 Stephen Place, NYC, NY', '10019', '239-270-6423', 'https://images.pexels.com/photos/253758/pexels-photo-253758.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940', 'Hello my name is _______, I come from _________. When I grow up, I would like to be a ________________.', 'autism spectrum', DEFAULT, 1),
   ('Shaine', 'Carrol', 'scarrol3@tumblr.com', 15, 'Student', 'Male', '470 Twin Pines Circle, NYC, NY', '10019', '583-929-9660', DEFAULT, 'Hello my name is _______, I come from _________. When I grow up, I would like to be a ________________.', 'autism spectrum', DEFAULT, 2),
   ('Christoph', 'Lieb', 'clieb4@senate.gov', 13, 'Student', 'Male', '1842 Emmet Drive, NYC, NY', '10019', '173-184-3962', DEFAULT, 'Hello my name is _______, I come from _________. When I grow up, I would like to be a ________________.', 'autism spectrum', true, 1),
   ('Vinita', 'Jedrzejewsky', 'vjedrzejewsky5@bluehost.com', 19, 'Student', 'Female', '43366 Trailsway Way, NYC, NY', '10019', '982-380-3384', DEFAULT, 'Hello my name is _______, I come from _________. When I grow up, I would like to be a ________________.', 'autism spectrum', DEFAULT, 2),
