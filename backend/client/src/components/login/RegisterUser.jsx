@@ -32,14 +32,32 @@ class RegisterUser extends Component {
       lastname,
       email,
       password,
-      confirm_password
+      confirm_password,
+      message
     } = this.state;
 
-    
-
-    if (password !== confirm_password) {
+    if(firstname.length < 3 || firstname === undefined) {
       this.setState({
-        message: "* Passwords do not match"
+        message: "First name is required"
+      })
+      return;
+    }
+
+    if(lastname.length < 3 || lastname === undefined) {
+      this.setState({
+        message: "Last name is required"
+      })
+      return;
+    }
+
+    if (password.length < 8 || password === undefined) {
+      this.setState({
+        message: "Password should be longer than 8 characters"
+      })
+      return;
+    } else if (password !== confirm_password) {
+      this.setState({
+        message: "Passwords do not match"
       });
       return;
     } else if (password === confirm_password) {
@@ -73,7 +91,8 @@ class RegisterUser extends Component {
       lastname,
       email,
       password,
-      confirm_password
+      confirm_password,
+      message
     } = this.state;
 
     const { inputOnChange, submitRegisterForm } = this;
@@ -87,6 +106,7 @@ class RegisterUser extends Component {
               {" "}
               Register Here{" "}
             </Header>
+            {message ? <Message color="yellow" content={message} /> : ""}
             <Form.Input
               type="text"
               name="firstname"
