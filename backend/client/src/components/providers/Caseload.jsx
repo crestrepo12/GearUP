@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { Link, Route, Switch } from "react-router-dom";
 import axios from "axios";
 import ClientCard from "./ClientCard";
-import { Header, Grid } from 'semantic-ui-react'
+import { Header, Grid } from "semantic-ui-react";
 
 class Caseload extends Component {
   constructor() {
@@ -13,7 +13,7 @@ class Caseload extends Component {
     };
   }
 
-  componentDidMount() {
+  getClients = () => {
     //whoever is logged in fetches their list of clients
     const user = this.props.loggedInUser;
     const provider_id = this.props.loggedInUser.id;
@@ -30,24 +30,32 @@ class Caseload extends Component {
           message: "There is an error in fetching a list of clients"
         });
       });
+  };
+
+  componentDidMount() {
+    this.getClients();
   }
-
-  // addClientByProvider = () => {
-
-  //   axios
-  // }
 
   render() {
     const { loggedInUser } = this.props;
     const { clients } = this.state;
     return (
-      <div id="caseload"  className="margin-top">
-        <Header as="h1" className="center" >Caseload</Header>
+      <div id="caseload" className="margin-top">
+        <Header as="h1" className="center">
+          Caseload
+        </Header>
 
-        <ClientCard 
-        loggedInUser={loggedInUser} 
-        clients={clients}
-        />
+        {clients.length === 0 ? (
+          <div>
+          <Header as="h2" className="center">
+            {" "}
+            Welcome to GearUP{" "}
+          </Header>
+          <p className="center"> Begin adding clients by clicking the "Add Client" at the top right corner</p>
+          </div>
+        ) : (
+          <ClientCard loggedInUser={loggedInUser} clients={clients} />
+        )}
       </div>
     );
   }
