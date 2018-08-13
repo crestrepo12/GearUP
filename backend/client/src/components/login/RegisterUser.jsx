@@ -35,6 +35,8 @@ class RegisterUser extends Component {
       confirm_password
     } = this.state;
 
+    
+
     if (password !== confirm_password) {
       this.setState({
         message: "* Passwords do not match"
@@ -88,52 +90,42 @@ class RegisterUser extends Component {
             <Form.Input
               type="text"
               name="firstname"
-              placeholder="First name"
+              label="First name"
+              aria-label="First name"
               onChange={inputOnChange}
               fluid
-              icon="user"
-              iconPosition="left"
-              required
             />
             <Form.Input
               type="text"
               name="lastname"
-              placeholder="Last name"
+              label="Last name"
+              aria-label="Last name"
               onChange={inputOnChange}
               fluid
-              icon="user"
-              iconPosition="left"
-              required
             />
             <Form.Input
               type="email"
               name="email"
-              placeholder="Email address"
+              label="Email address"
+              aria-label="Email address"
               onChange={inputOnChange}
               fluid
-              icon="at"
-              iconPosition="left"
-              required
             />
             <Form.Input
               type="password"
               name="password"
-              placeholder="Password"
+              label="Password"
+              aria-label="Password"
               onChange={inputOnChange}
               fluid
-              icon="lock"
-              iconPosition="left"
-              required
             />
             <Form.Input
               type="password"
               name="confirm_password"
-              placeholder="Confirm Password"
+              label="Confirm Password"
+              aria-label="Confirm Password"
               onChange={inputOnChange}
               fluid
-              icon="lock"
-              iconPosition="left"
-              required
             />
             <Button type="submit" value="Submit">
               {" "}
