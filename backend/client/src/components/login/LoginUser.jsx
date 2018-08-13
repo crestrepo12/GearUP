@@ -43,15 +43,15 @@ class LoginUser extends Component {
       })
       .catch(err => {
         console.log(err);
-        if (email === "" && password === "") {
+        if ((email === "" || email === undefined) 
+            && (password === "" || password === undefined)) {
           this.setState({
-            message: "* Fill out required fields"
+            message: "Fill out required fields"
           });
         } else {
           this.setState({
-            email: "",
             password: "",
-            message: "* Email / Password Incorrect"
+            message: "Email / Password Incorrect"
           });
         }
       });
@@ -73,15 +73,15 @@ class LoginUser extends Component {
       })
       .catch(err => {
         console.log(err);
-        if (email === "" && password === "") {
+        if (email === ""  && password === "") {
           this.setState({
-            message: "* Fill out required fields"
+            message: "Fill out required fields"
           });
         } else {
           this.setState({
             email: "",
             password: "",
-            message: "* Email / Password Incorrect"
+            message: "Email / Password Incorrect"
           });
         }
       });
@@ -94,32 +94,29 @@ class LoginUser extends Component {
     return (
       <div id="login-page" className="full-width full-height margin-top">
         <div className="login-container">
-          <Header as="h1" color="blue" className="center">
+          <Header as="h1" className="center">
             {" "}
             Log in to your account{" "}
           </Header>
+          {message ? <Message color="yellow" content={message} /> : ""}
           <Form size="large" onSubmit={submitLoginForm} className="column form">
             <Form.Input
               type="email"
               name="email"
               value={email}
-              placeholder="Email address"
+              label="Email address"
+              aria-label="Email address"
               onChange={inputOnChange}
               fluid
-              icon="at"
-              iconPosition="left"
-              required
             />
             <Form.Input
               type="password"
               name="password"
               value={password}
-              placeholder="Password"
+              label="Password"
+              aria-label="Password"
               onChange={inputOnChange}
               fluid
-              icon="lock"
-              iconPosition="left"
-              required
             />
             <Button type="submit"> Login </Button>
             <br />
@@ -127,11 +124,10 @@ class LoginUser extends Component {
               type="button"
               value="Guest Login"
               onClick={handleGuestLogin}
-            >
-              Demo Login
+            >  Demo Login
             </Button>
           </Form>
-          <p> {message} </p>
+          <br />
           <div>
             <Message className="center">
               New to GearUp? {" "}
