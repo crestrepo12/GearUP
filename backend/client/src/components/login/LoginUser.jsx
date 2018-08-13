@@ -44,13 +44,12 @@ class LoginUser extends Component {
       .catch(err => {
         console.log(err);
         if ((email === "" || email === undefined) 
-            && (password === "" || email === undefined)) {
+            && (password === "" || password === undefined)) {
           this.setState({
             message: "Fill out required fields"
           });
         } else {
           this.setState({
-            email: "",
             password: "",
             message: "Email / Password Incorrect"
           });
