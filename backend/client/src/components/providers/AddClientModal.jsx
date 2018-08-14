@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import defaultImage from "../../assets/User-Profile.png"
 import axios from "axios";
 import {
   Button,
@@ -40,7 +41,7 @@ class AddClientModal extends Component {
 
   addNewClientSubmitForm = e => {
     // e.preventDefault();
-    console.log("im trying to submit new client");
+    // console.log("im trying to submit new client");
     axios
       .post(`/users/add_client`, {
         firstname: this.state.firstname,
@@ -122,8 +123,8 @@ class AddClientModal extends Component {
         <Modal.Content image scrolling>
           <Image
             size="medium"
-            src="User-Profile.png"
-            alt="placeholder profile image"
+            src={defaultImage}
+            alt="default user profile image"
             wrapped
           />
 
