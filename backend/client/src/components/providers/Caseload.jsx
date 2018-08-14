@@ -3,6 +3,7 @@ import { Link, Route, Switch } from "react-router-dom";
 import axios from "axios";
 import ClientCard from "./ClientCard";
 import { Header, Grid } from "semantic-ui-react";
+import defaultImage from "../../assets/User-Profile.png"
 
 class Caseload extends Component {
   constructor() {
