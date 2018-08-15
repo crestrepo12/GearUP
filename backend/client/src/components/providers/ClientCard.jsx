@@ -2,6 +2,7 @@ import react from "react";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Card, Icon, Image } from "semantic-ui-react";
+import defaultImage from "../../assets/User-Profile.png"
 
 class ClientCard extends Component {
   constructor() {
@@ -17,11 +18,21 @@ class ClientCard extends Component {
           return (
             <Link to={`/client/${client.id}`} key={client.id}>
               <Card>
-                <Image
-                  src={client.imgurl}
-                  alt={client.imgurl}
-                  className="adjust-image"
-                />
+                {/* image of client or default user image */}
+                {client.imgurl === null ? (
+                  <Image
+                    src={defaultImage}
+                    alt="default user profile image"
+                    className="adjust-image"
+                  />
+                ) : (
+                  <Image
+                    src={client.imgurl}
+                    alt={client.imgurl}
+                    className="adjust-image"
+                  />
+                )}
+
                 <Card.Content>
                   <Card.Header>{`${client.firstname} ${
                     client.lastname
@@ -31,7 +42,6 @@ class ClientCard extends Component {
                     "Loves going to the movies"
                   </Card.Description>
                 </Card.Content>
-                
               </Card>
             </Link>
           );
