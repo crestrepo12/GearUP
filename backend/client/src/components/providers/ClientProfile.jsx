@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link, Route, Switch, Redirect } from "react-router-dom";
+import defaultImage from "../../assets/User-Profile.png";
 import axios from "axios";
 import {
   Header,
@@ -52,7 +53,7 @@ class ClientProfile extends Component {
             <Item>
               <Image
                 src={
-                  client.imgurl === null ? "User-Profile.png" : client.imgurl
+                  client.imgurl === null ? defaultImage : client.imgurl
                 }
                 alt={`${client.firstname} ${client.lastname}`}
                 rounded
