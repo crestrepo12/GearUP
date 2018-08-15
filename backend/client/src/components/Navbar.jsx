@@ -4,6 +4,8 @@ import axios from "axios";
 import { Button } from "semantic-ui-react";
 import AddClientModal from "./providers/AddClientModal";
 import { Image } from "semantic-ui-react";
+import gearUpIcon from "../assets/GearUpIcon.png";
+
 class Navbar extends Component {
   constructor(props) {
     super(props);
@@ -29,7 +31,7 @@ class Navbar extends Component {
       <nav id="navigation-bar">
         <div id="navbar-left">
           <Link to="/">
-            <Image src="GearUpIcon.png" alt="logo" />
+            <Image src={gearUpIcon} alt="logo" />
             <h2> GearUP </h2>
           </Link>
         </div>
@@ -46,7 +48,7 @@ class Navbar extends Component {
       <nav id="navigation-bar">
         <div id="navbar-left">
           <Link to="/">
-          <Image src="GearUpIcon.png" alt="logo" />
+          <Image src={gearUpIcon} alt="logo" />
             <h2>GearUP</h2>
           </Link>
         </div>

@@ -51,14 +51,21 @@ class ClientProfile extends Component {
         <div key={client.id} id="profile-header">
           <Item.Group divided>
             <Item>
-              <Image
-                src={
-                  client.imgurl === null ? defaultImage : client.imgurl
-                }
+
+            { client.imgurl === null ? 
+             (<Image
+              src={defaultImage}
+              alt={`${client.firstname} ${client.lastname}`}
+              rounded
+              className="adjust-image-profile"
+            />) : 
+              (<Image
+                src={client.imgurl}
                 alt={`${client.firstname} ${client.lastname}`}
                 rounded
                 className="adjust-image-profile"
-              />
+              />)
+}
               <Item.Content>
                 <Item.Header>
                   {`${client.firstname} ${client.lastname}`}
